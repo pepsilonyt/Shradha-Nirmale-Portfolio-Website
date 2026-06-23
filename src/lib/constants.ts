@@ -5,7 +5,7 @@ export const NAV = {
 };
 
 export const HERO = {
-  socialProof: '★★★★★ Rated Excellent by 50+ international professionals and test-takers.',
+  socialProof: 'Rated Excellent by 50+ international professionals and test-takers.',
   h1: 'Clear English for High Scores and Better Careers.',
   sub: 'Stop memorizing endless rules. Find the exact bottleneck blocking your English progress, eliminate exam panic, and get the results you need.',
   bullets: [
