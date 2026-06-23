@@ -182,7 +182,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
   const progressPct = ((step - 1) / 2) * 100 + 10; // offset slightly for aesthetic start
 
   return (
-    <section id="form" className="py-24 md:py-32 bg-neutral-50/50 border-t border-border">
+    <section id="form" className="py-24 md:py-32 bg-neutral-50/50 dark:bg-neutral-950/20 border-t border-border">
       <div className="max-w-3xl mx-auto px-6 md:px-12">
         
         {/* Urgency Banner */}
@@ -627,7 +627,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                   type="button"
                   onClick={handleBack}
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-semibold hover:bg-neutral-50 transition-colors disabled:opacity-50 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   <span>Back</span>
