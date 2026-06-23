@@ -68,8 +68,19 @@ export default function Footer() {
           </div>
 
           {/* Center: Copyright */}
-          <div className="text-center text-xs text-muted md:order-none order-last">
-            &copy; {currentYear} Shradha N. All rights reserved. Registered English Educator.
+          <div className="text-center text-xs text-muted md:order-none order-last space-y-1">
+            <p>&copy; {currentYear} Shradha N. All rights reserved. Registered English Educator.</p>
+            <p className="text-[10px] text-muted/70">
+              Designed by{' '}
+              <a
+                href="https://www.linkedin.com/in/siddharth-nirmale-a60718354/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-accent transition-colors font-medium"
+              >
+                pepsy
+              </a>
+            </p>
           </div>
 
           {/* Right: Links */}
