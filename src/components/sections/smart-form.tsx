@@ -207,7 +207,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
         </div>
 
         {/* Form Container Card */}
-        <div className="rounded-3xl border border-border bg-card-bg shadow-card p-8 md:p-12 relative overflow-hidden">
+        <div className="rounded-3xl border border-border bg-card-bg shadow-card p-5 sm:p-8 md:p-12 relative overflow-hidden">
           
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <AnimatePresence mode="wait">

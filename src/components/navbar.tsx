@@ -4,13 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import { NAV } from '@/lib/constants';
 import { useAnalytics } from '@/hooks/use-analytics';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { trackEvent } = useAnalytics();
 
   useEffect(() => {
@@ -62,6 +63,14 @@ export default function Navbar() {
     }
   };
 
+  const handleMobileNavClick = (sectionId: string, buttonLabel: string) => {
+    setIsMenuOpen(false);
+    // Defer scrolling to allow the menu drop-down height transitions to close completely
+    setTimeout(() => {
+      handleNavClick(sectionId, buttonLabel);
+    }, 300);
+  };
+
   const handleExternalClick = (platform: string) => {
     trackEvent({
       category: 'Navigation',
@@ -73,7 +82,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-nav py-4 shadow-sm' : 'bg-transparent py-6'
+        isScrolled || isMenuOpen ? 'glass-nav py-4 shadow-sm' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -108,7 +117,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Right Side: Navigation Buttons */}
+        {/* Right Side: Navigation Buttons & Hamburger */}
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
@@ -150,13 +159,82 @@ export default function Navbar() {
             size="sm"
             onClick={() => handleExternalClick('Preply')}
             asChild
+            className="hidden sm:inline-flex"
           >
             <a href={NAV.preply} target="_blank" rel="noopener noreferrer">
               Book on Preply
             </a>
           </Button>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 rounded-full border border-border hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200 cursor-pointer flex items-center justify-center w-9 h-9 md:hidden text-foreground"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden glass-nav border-t border-border overflow-hidden absolute top-full left-0 right-0 z-40 shadow-lg"
+          >
+            <div className="px-6 py-6 flex flex-col gap-4 bg-background/95 backdrop-blur-md">
+              {[
+                { id: 'problem', label: 'Challenges' },
+                { id: 'tracks', label: 'Programs' },
+                { id: 'edge', label: 'Methodology' },
+                { id: 'vault', label: 'Credentials' },
+                { id: 'faq', label: 'FAQ' },
+              ].map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => handleMobileNavClick(link.id, link.label)}
+                  className="text-left py-2.5 text-base font-semibold text-muted hover:text-foreground border-b border-border/30 last:border-b-0 transition-colors cursor-pointer"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border/40">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    handleExternalClick('LinkedIn');
+                  }}
+                  asChild
+                  className="w-full justify-center"
+                >
+                  <a href={NAV.linkedin} target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                  </a>
+                </Button>
+                <Button
+                  variant="default"
+                  size="sm"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    handleExternalClick('Preply');
+                  }}
+                  asChild
+                  className="w-full justify-center"
+                >
+                  <a href={NAV.preply} target="_blank" rel="noopener noreferrer">
+                    Book on Preply
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

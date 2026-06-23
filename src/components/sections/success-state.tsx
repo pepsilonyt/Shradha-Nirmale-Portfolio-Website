@@ -41,7 +41,7 @@ export default function SuccessState() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl border border-border bg-card-bg shadow-card-hover p-8 md:p-12 text-center space-y-8 relative overflow-hidden"
+          className="rounded-3xl border border-border bg-card-bg shadow-card-hover p-5 sm:p-8 md:p-12 text-center space-y-8 relative overflow-hidden"
         >
           {/* Grid background visual */}
           <div className="absolute inset-0 grid-bg opacity-[0.02] pointer-events-none" />

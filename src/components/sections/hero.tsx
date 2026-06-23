@@ -239,7 +239,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
-              className="absolute -top-6 -right-6 md:right-4 bg-card-bg border border-border shadow-card p-3 rounded-2xl flex items-center gap-2.5 z-10"
+              className="hidden sm:flex absolute -top-6 -right-6 md:right-4 bg-card-bg border border-border shadow-card p-3 rounded-2xl items-center gap-2.5 z-10"
             >
               <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                 <Award className="h-4 w-4" />
@@ -253,7 +253,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute -bottom-8 -left-6 md:left-4 bg-card-bg border border-border shadow-card p-3 rounded-2xl flex items-center gap-2.5 z-10"
+              className="hidden sm:flex absolute -bottom-8 -left-6 md:left-4 bg-card-bg border border-border shadow-card p-3 rounded-2xl items-center gap-2.5 z-10"
             >
               <div className="w-8 h-8 rounded-lg bg-accent/5 text-accent flex items-center justify-center">
                 <Award className="h-4 w-4" />
