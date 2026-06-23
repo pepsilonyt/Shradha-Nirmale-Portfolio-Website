@@ -1,65 +1,96 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import Navbar from '@/components/navbar';
+import Footer from '@/components/footer';
+import Hero from '@/components/sections/hero';
+import Empathy from '@/components/sections/empathy';
+import SolutionTracks from '@/components/sections/solution-tracks';
+import InterdisciplinaryEdge from '@/components/sections/edge';
+import CredentialVault from '@/components/sections/credential-vault';
+import SmartForm from '@/components/sections/smart-form';
+import SuccessState from '@/components/sections/success-state';
+import FAQ from '@/components/sections/faq';
+import StickyCTA from '@/components/sticky-cta';
+import ExitIntentPopup from '@/components/exit-intent-popup';
+import { Track } from '@/lib/form-schema';
+import SectionReveal from '@/components/section-reveal';
 
 export default function Home() {
+  const [preselectedTrack, setPreselectedTrack] = useState<Track | null>(null);
+  const [formCompleted, setFormCompleted] = useState(false);
+
+  const scrollToForm = () => {
+    const element = document.getElementById('form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSelectTrack = (trackId: Track) => {
+    setPreselectedTrack(trackId);
+    scrollToForm();
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Structural layout navbar */}
+      <Navbar />
+
+      <main className="flex-1 w-full overflow-hidden">
+        
+        {/* Section 1: Hero */}
+        <Hero onCTAClick={scrollToForm} />
+
+        {/* Section 2: Empathy / Problem */}
+        <SectionReveal direction="up" delay={0.1}>
+          <Empathy />
+        </SectionReveal>
+
+        {/* Section 3: Solution Tracks */}
+        <SectionReveal direction="up" delay={0.1}>
+          <SolutionTracks onSelectTrack={handleSelectTrack} />
+        </SectionReveal>
+
+        {/* Section 4: Interdisciplinary Edge */}
+        <SectionReveal direction="up" delay={0.1}>
+          <InterdisciplinaryEdge />
+        </SectionReveal>
+
+        {/* Section 5: Credential Vault */}
+        <SectionReveal direction="up" delay={0.1}>
+          <CredentialVault />
+        </SectionReveal>
+
+        {/* Section 6 & 7: Multi-Step Smart Form / Success State */}
+        <div id="form">
+          <AnimatePresence mode="wait">
+            {!formCompleted ? (
+              <SmartForm
+                key="smart-form"
+                preselectedTrack={preselectedTrack}
+                onSuccess={() => setFormCompleted(true)}
+              />
+            ) : (
+              <SuccessState key="success-state" />
+            )}
+          </AnimatePresence>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* Section 8: FAQ */}
+        <SectionReveal direction="up" delay={0.1}>
+          <FAQ />
+        </SectionReveal>
+
       </main>
-    </div>
+
+      {/* Structural layout footer */}
+      <Footer />
+
+      {/* CRO Conversion Utilities */}
+      <StickyCTA onClick={scrollToForm} />
+      <ExitIntentPopup onCTA={scrollToForm} />
+    </>
   );
 }
