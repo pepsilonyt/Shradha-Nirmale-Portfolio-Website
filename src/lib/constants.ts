@@ -1,7 +1,9 @@
 export const NAV = {
   logo: 'Shradha N. | Learning Strategist',
   linkedin: 'https://www.linkedin.com/in/shradha-nirmale-english-educator-conversion-optimizer/',
-  preply: 'https://preply.com/en/tutor/7009237',
+  preply: 'https://preply.in/SHRADHA6EN3044924710?ts=17811645',
+  calendar: 'https://calendar.app.google/ScjHC7Ku8iBbNgHj6',
+  cxlCerts: 'https://1drv.ms/f/c/f4ebd9bd1dcddc1c/IgAc3M0dvdnrIID0JAQAAAAAAT2oEWoh-TtTK-wmZD5NYyA?e=ucsBDZ',
 };
 
 export const HERO = {

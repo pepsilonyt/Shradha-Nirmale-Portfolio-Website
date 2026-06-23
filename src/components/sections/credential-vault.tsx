@@ -171,6 +171,17 @@ export default function CredentialVault() {
             </DialogContent>
           )}
         </Dialog>
+        {/* Bottom OneDrive certificates link */}
+        <div className="mt-12 text-center">
+          <a
+            href="https://1drv.ms/f/c/f4ebd9bd1dcddc1c/IgAc3M0dvdnrIID0JAQAAAAAAT2oEWoh-TtTK-wmZD5NYyA?e=ucsBDZ"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:text-accent hover:border-neutral-300 dark:hover:border-neutral-800 transition-all font-display font-semibold text-sm shadow-sm cursor-pointer"
+          >
+            <span>View All Verified CXL Certificates (OneDrive) →</span>
+          </a>
+        </div>
 
       </div>
     </section>

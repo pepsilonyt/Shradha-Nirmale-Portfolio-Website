@@ -94,7 +94,7 @@ export default function SuccessState() {
                   Book Strategy Audit & Blueprint Setup
                 </p>
                 <p className="text-xs text-muted mt-1 max-w-sm mx-auto">
-                  A calendar slot will open on Preply platform or via Google Meet. Secure your time.
+                  A calendar slot will open on Google Calendar or directly on the Preply platform.
                 </p>
               </div>
 
@@ -118,15 +118,24 @@ export default function SuccessState() {
                 })}
               </div>
 
-              <div className="pt-4 w-full">
+              <div className="pt-4 w-full flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://preply.com/en/tutor/7009237"
+                  href="https://calendar.app.google/ScjHC7Ku8iBbNgHj6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 justify-center w-full px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all"
+                  className="inline-flex items-center gap-2 justify-center flex-1 px-5 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all text-xs sm:text-sm text-center"
                 >
-                  <span>Go to Booking Calendar on Preply</span>
-                  <ChevronRight className="h-4 w-4" />
+                  <span>Book Free Strategy Session</span>
+                  <ChevronRight className="h-4 w-4 shrink-0" />
+                </a>
+                <a
+                  href="https://preply.in/SHRADHA6EN3044924710?ts=17811645"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 justify-center flex-1 px-5 py-3 border border-border bg-card-bg hover:bg-neutral-50 dark:hover:bg-neutral-900 text-foreground rounded-xl font-semibold transition-all text-xs sm:text-sm text-center"
+                >
+                  <span>Book Lesson on Preply</span>
+                  <ChevronRight className="h-4 w-4 text-accent shrink-0" />
                 </a>
               </div>
             </div>
