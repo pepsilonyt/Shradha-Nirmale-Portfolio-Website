@@ -77,7 +77,7 @@ export default function FAQ() {
             Still have questions?
           </h3>
           <p className="text-muted text-sm max-w-md mx-auto">
-            Book a complimentary strategy call. Shradha will walk you through your diagnostics live and configure your custom roadmap.
+            Book a complimentary strategy call. I will walk you through your diagnostics live and configure your custom roadmap.
           </p>
           <div className="pt-2">
             <button

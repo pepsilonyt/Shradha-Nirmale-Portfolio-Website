@@ -96,7 +96,7 @@ export default function Empathy() {
             }}
             className="inline-flex items-center gap-2 text-foreground font-display font-bold hover:text-accent transition-colors group cursor-pointer text-sm md:text-base"
           >
-            <span>See how Shradha solves these</span>
+            <span>See how I solve these</span>
             <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
           </button>
         </div>

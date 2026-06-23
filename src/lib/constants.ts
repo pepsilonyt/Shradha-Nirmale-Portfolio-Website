@@ -25,7 +25,7 @@ export const PAIN_CARDS = [
     icon: 'GraduationCap',
     title: 'Stuck on CELPIP?',
     pain: "You've taken practice tests but your score doesn't move. Reading and Writing feel impossible under time pressure.",
-    solution: 'Shradha maps your exact skill gaps, rebuilds your time-management approach, and coaches you to consistent band improvement.',
+    solution: 'I map your exact skill gaps, rebuild your time-management approach, and coach you to consistent band improvement.',
   },
   {
     id: 'det',

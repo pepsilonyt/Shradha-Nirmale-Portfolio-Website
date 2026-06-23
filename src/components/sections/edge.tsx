@@ -29,7 +29,7 @@ export default function InterdisciplinaryEdge() {
             </div>
 
             <p className="text-muted text-lg leading-relaxed">
-              {"Shradha N. doesn't just teach English; she optimizes your brain's processing pipeline. By blending language training with cognitive learning design and precise error metrics, she builds systems that unlock immediate, repeatable score improvements."}
+              {"I don't just teach English; I optimize your brain's processing pipeline. By blending language training with cognitive learning design and precise error metrics, I build systems that unlock immediate, repeatable score improvements."}
             </p>
 
             <div className="space-y-4 border-l-2 border-accent pl-6 py-2">
