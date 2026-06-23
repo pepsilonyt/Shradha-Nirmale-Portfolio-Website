@@ -85,6 +85,21 @@ export default function Empathy() {
           ))}
         </div>
 
+        {/* Bottom CTA to tracks */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => {
+              const el = document.getElementById('tracks');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="inline-flex items-center gap-2 text-foreground font-display font-bold hover:text-accent transition-colors group cursor-pointer text-sm md:text-base"
+          >
+            <span>See how Shradha solves these</span>
+            <ArrowRight className="h-4 w-4 text-accent transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
       </div>
     </section>
   );

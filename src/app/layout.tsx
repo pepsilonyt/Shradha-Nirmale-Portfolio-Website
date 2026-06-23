@@ -59,7 +59,7 @@ export default function RootLayout({
     'name': 'Shradha Nirmale',
     'jobTitle': 'Learning Strategist & English Educator',
     'url': 'https://shradhanirmale.com',
-    'sameAs': ['https://www.linkedin.com/in/shradhanirmale/'],
+    'sameAs': ['https://www.linkedin.com/in/shradha-nirmale-english-educator-conversion-optimizer/'],
   };
 
   const serviceSchema = {

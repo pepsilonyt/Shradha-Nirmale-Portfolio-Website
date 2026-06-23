@@ -74,7 +74,7 @@ export default function SuccessState() {
               <div className="flex items-center gap-3">
                 <Calendar className="h-5 w-5 text-accent" />
                 <h3 className="font-display font-bold text-base text-foreground">
-                  Select Strategy Strategy Call Date
+                  Select Strategy Call Date
                 </h3>
               </div>
               <span className="text-xs font-semibold text-accent bg-accent/5 px-2.5 py-1 rounded-full border border-accent/10">
@@ -120,7 +120,7 @@ export default function SuccessState() {
 
               <div className="pt-4 w-full">
                 <a
-                  href="https://preply.com" // replacement anchor
+                  href="https://preply.com/en/tutor/7009237"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 justify-center w-full px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all"

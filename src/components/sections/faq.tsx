@@ -71,6 +71,29 @@ export default function FAQ() {
           </Accordion>
         </SectionReveal>
 
+        {/* Still have questions CTA */}
+        <div className="mt-16 p-8 rounded-3xl border border-border bg-neutral-50/50 dark:bg-neutral-900/20 text-center space-y-4 max-w-2xl mx-auto">
+          <h3 className="font-display font-bold text-lg md:text-xl text-foreground">
+            Still have questions?
+          </h3>
+          <p className="text-muted text-sm max-w-md mx-auto">
+            Book a complimentary strategy call. Shradha will walk you through your diagnostics live and configure your custom roadmap.
+          </p>
+          <div className="pt-2">
+            <button
+              onClick={() => {
+                const el = document.getElementById('form');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all cursor-pointer"
+            >
+              <span>Get Free Diagnostic Audit</span>
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
   );

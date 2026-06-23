@@ -43,9 +43,13 @@ export default function CredentialVault() {
             </p>
           </div>
           
-          {/* Scroll instruction for mobile */}
-          <div className="text-xs text-muted font-semibold uppercase tracking-wider flex items-center gap-2 md:block hidden">
-            <span>Click any credential to inspect verification</span>
+          {/* Scroll instruction for mobile/desktop */}
+          <div className="text-xs text-muted font-semibold uppercase tracking-wider">
+            <span className="hidden md:inline">Click any credential to inspect verification</span>
+            <span className="inline md:hidden flex items-center gap-1 text-accent animate-pulse">
+              <span>Swipe to view credentials</span>
+              <ChevronRight className="h-3.5 w-3.5 inline" />
+            </span>
           </div>
         </div>
 

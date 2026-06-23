@@ -39,7 +39,7 @@ export default function InterdisciplinaryEdge() {
             </div>
 
             {/* Microstats block */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-border">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-border text-center sm:text-left">
               {STATS.map((stat, idx) => (
                 <div key={idx} className="space-y-1">
                   <p className="font-display font-extrabold text-2xl md:text-3xl text-foreground">

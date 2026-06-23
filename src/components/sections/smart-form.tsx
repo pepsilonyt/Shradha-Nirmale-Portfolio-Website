@@ -321,7 +321,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <select
                             id="celpipTargetScore"
                             {...register('celpipTargetScore')}
-                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer"
+                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer [&>option]:bg-card-bg [&>option]:text-foreground"
                           >
                             <option value="">Select Band...</option>
                             <option value="7">Band 7</option>
@@ -407,7 +407,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <select
                             id="detTargetScore"
                             {...register('detTargetScore')}
-                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer"
+                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer [&>option]:bg-card-bg [&>option]:text-foreground"
                           >
                             <option value="">Select Score...</option>
                             <option value="100">100 - 105</option>
@@ -449,8 +449,8 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                                 {...register('detPrepStatus')}
                                 className="peer sr-only"
                               />
-                              <div className="w-4 h-4 rounded-full border border-border flex items-center justify-center peer-checked:border-accent">
-                                <div className="w-2 h-2 rounded-full bg-accent scale-0 peer-checked:scale-100 transition-transform" />
+                              <div className="w-4 h-4 rounded-full border border-border flex items-center justify-center peer-checked:border-accent peer-checked:[&>div]:scale-100">
+                                <div className="w-2 h-2 rounded-full bg-accent scale-0 transition-transform" />
                               </div>
                               <span className="text-sm font-semibold text-foreground">{option.label}</span>
                             </label>
@@ -591,7 +591,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                       <select
                         id="timezone"
                         {...register('timezone')}
-                        className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer"
+                        className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer [&>option]:bg-card-bg [&>option]:text-foreground"
                       >
                         <option value="IST">India Standard Time (IST)</option>
                         <option value="EST">Eastern Time (EST)</option>

@@ -22,6 +22,18 @@ export default function Hero({ onCTAClick }: HeroProps) {
     onCTAClick();
   };
 
+  const handleSecondaryCTA = (e: React.MouseEvent) => {
+    e.preventDefault();
+    trackEvent({
+      category: 'Hero',
+      action: 'click_view_success_stories_cta',
+    });
+    const el = document.getElementById('vault');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Mock icons dictionary
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -37,7 +49,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
   };
 
   return (
-    <section className="relative min-h-screen pt-32 pb-24 md:py-40 bg-background overflow-hidden">
+    <section className="relative min-h-screen pt-28 sm:pt-32 pb-24 md:py-40 bg-background overflow-hidden">
       {/* Subtle Background Grid */}
       <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
       
@@ -45,7 +57,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/5 rounded-full filter blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Left Column: Copy & CTAs */}
@@ -113,6 +125,12 @@ export default function Hero({ onCTAClick }: HeroProps) {
                 <MagneticButton onClick={handleHeroCTA} className="text-center font-display font-semibold">
                   {HERO.cta}
                 </MagneticButton>
+                <button
+                  onClick={handleSecondaryCTA}
+                  className="font-display font-semibold inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-border text-foreground hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors shadow-sm cursor-pointer"
+                >
+                  <span>View Success Stories</span>
+                </button>
               </div>
 
               {/* Trust microcopy */}
