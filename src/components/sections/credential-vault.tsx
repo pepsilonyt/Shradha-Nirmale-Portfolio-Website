@@ -26,7 +26,7 @@ export default function CredentialVault() {
   };
 
   return (
-    <section id="vault" className="py-24 md:py-32 bg-white relative">
+    <section id="vault" className="py-24 md:py-32 bg-background relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
@@ -58,7 +58,7 @@ export default function CredentialVault() {
                 onClick={() => setActiveCert(cert)}
                 className="min-w-[280px] sm:min-w-[320px] max-w-[360px] snap-start shrink-0 cursor-zoom-in transition-all duration-300 hover:scale-[1.03] group"
               >
-                <Card className="h-full border border-border bg-neutral-50/50 hover:bg-white shadow-card hover:shadow-card-hover rounded-3xl overflow-hidden flex flex-col justify-between">
+                <Card className="h-full border border-border bg-neutral-50/50 dark:bg-neutral-900/40 hover:bg-card-bg shadow-card hover:shadow-card-hover rounded-3xl overflow-hidden flex flex-col justify-between">
                   <CardContent className="p-6 sm:p-8 flex flex-col gap-6 h-full justify-between">
                     
                     {/* Visual Certificate Placeholder */}
@@ -66,7 +66,7 @@ export default function CredentialVault() {
                       {/* Grid background layer in placeholder */}
                       <div className="absolute inset-0 grid-bg opacity-[0.02] pointer-events-none" />
                       
-                      <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-accent shadow-sm mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 rounded-full bg-card-bg flex items-center justify-center text-accent shadow-sm mb-4 group-hover:scale-110 transition-transform duration-300">
                         <ZoomIn className="h-5 w-5" />
                       </div>
                       <p className="font-display font-extrabold text-sm text-foreground leading-snug">
@@ -110,10 +110,10 @@ export default function CredentialVault() {
         {/* Lightbox / Modal */}
         <Dialog open={activeCert !== null} onOpenChange={(open) => { if (!open) setActiveCert(null); }}>
           {activeCert && (
-            <DialogContent className="max-w-xl p-8 rounded-3xl border border-border bg-white shadow-card-hover text-center select-none">
+            <DialogContent className="max-w-xl p-8 rounded-3xl border border-border bg-card-bg shadow-card-hover text-center select-none">
               <DialogHeader className="items-center pb-4 border-b border-border">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full border border-green-200/50 mb-3">
-                  <ShieldCheck className="h-4 w-4 text-green-600" />
+                <div className="flex items-center gap-1.5 text-xs font-bold text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/25 px-3 py-1 rounded-full border border-green-200/50 dark:border-green-800/40 mb-3">
+                  <ShieldCheck className="h-4 w-4 text-green-600 dark:text-green-400" />
                   <span>Verified Educational Credential</span>
                 </div>
                 <DialogTitle className="font-display font-extrabold text-2xl tracking-tight text-foreground text-center">
@@ -125,9 +125,9 @@ export default function CredentialVault() {
               </DialogHeader>
 
               {/* Certificate mock view in lightbox */}
-              <div className="my-8 aspect-[4/3] rounded-2xl bg-gradient-to-br from-neutral-50 to-neutral-100 border border-border flex flex-col items-center justify-center p-8 relative">
+              <div className="my-8 aspect-[4/3] rounded-2xl bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950 border border-border flex flex-col items-center justify-center p-8 relative">
                 <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
-                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm mb-4">
+                <div className="w-16 h-16 rounded-full bg-card-bg flex items-center justify-center shadow-sm mb-4">
                   🏅
                 </div>
                 <h3 className="font-display font-extrabold text-lg text-foreground tracking-tight">
@@ -144,13 +144,13 @@ export default function CredentialVault() {
                 {/* Navigation arrows inside layout */}
                 <button
                   onClick={handlePrevCert}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center hover:bg-neutral-50 transition-colors shadow-sm cursor-pointer"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card-bg border border-border flex items-center justify-center hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors shadow-sm cursor-pointer"
                 >
                   <ChevronLeft className="h-5 w-5 text-foreground" />
                 </button>
                 <button
                   onClick={handleNextCert}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center hover:bg-neutral-50 transition-colors shadow-sm cursor-pointer"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card-bg border border-border flex items-center justify-center hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors shadow-sm cursor-pointer"
                 >
                   <ChevronRight className="h-5 w-5 text-foreground" />
                 </button>
@@ -159,7 +159,7 @@ export default function CredentialVault() {
               <div className="flex justify-end gap-3 mt-4">
                 <button
                   onClick={() => setActiveCert(null)}
-                  className="px-6 py-2.5 rounded-full border border-border text-sm font-semibold hover:bg-neutral-50 transition-colors cursor-pointer"
+                  className="px-6 py-2.5 rounded-full border border-border text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors cursor-pointer"
                 >
                   Close Vault
                 </button>

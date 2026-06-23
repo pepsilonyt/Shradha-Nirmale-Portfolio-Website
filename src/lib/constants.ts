@@ -1,7 +1,7 @@
 export const NAV = {
   logo: 'Shradha N. | Learning Strategist',
-  linkedin: 'https://linkedin.com',   // placeholder to be replaced by user later
-  preply: 'https://preply.com',       // placeholder to be replaced by user later
+  linkedin: 'https://www.linkedin.com/in/shradha-nirmale-english-educator-conversion-optimizer/',
+  preply: 'https://preply.com/en/tutor/7009237',
 };
 
 export const HERO = {

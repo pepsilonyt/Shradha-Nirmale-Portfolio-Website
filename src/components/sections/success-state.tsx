@@ -35,13 +35,13 @@ export default function SuccessState() {
   }, []);
 
   return (
-    <section className="py-24 md:py-32 bg-neutral-50/50">
+    <section className="py-24 md:py-32 bg-background">
       <div className="max-w-3xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl border border-border bg-white shadow-card-hover p-8 md:p-12 text-center space-y-8 relative overflow-hidden"
+          className="rounded-3xl border border-border bg-card-bg shadow-card-hover p-8 md:p-12 text-center space-y-8 relative overflow-hidden"
         >
           {/* Grid background visual */}
           <div className="absolute inset-0 grid-bg opacity-[0.02] pointer-events-none" />
@@ -52,7 +52,7 @@ export default function SuccessState() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 }}
-              className="w-20 h-20 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center border border-emerald-100"
+              className="w-20 h-20 rounded-full bg-emerald-50 dark:bg-emerald-950/25 text-emerald-500 flex items-center justify-center border border-emerald-100 dark:border-emerald-900/40"
             >
               <CheckCircle2 className="h-10 w-10" />
             </motion.div>
@@ -69,7 +69,7 @@ export default function SuccessState() {
           </div>
 
           {/* Scheduling Calendar Component Mockup */}
-          <div className="p-6 md:p-8 rounded-2xl border border-border bg-neutral-50/50 text-left space-y-6">
+          <div className="p-6 md:p-8 rounded-2xl border border-border bg-neutral-50/50 dark:bg-neutral-900/30 text-left space-y-6">
             <div className="flex items-center justify-between border-b border-border pb-4">
               <div className="flex items-center gap-3">
                 <Calendar className="h-5 w-5 text-accent" />
@@ -83,8 +83,8 @@ export default function SuccessState() {
             </div>
 
             {/* Calendar Embed Mockup */}
-            <div className="bg-white border border-border rounded-xl p-6 shadow-sm min-h-[300px] flex flex-col items-center justify-center text-center gap-4 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-neutral-50/20 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            <div className="bg-card-bg dark:bg-neutral-900/40 border border-border rounded-xl p-6 shadow-sm min-h-[300px] flex flex-col items-center justify-center text-center gap-4 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-neutral-50/20 dark:bg-neutral-950/10 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               
               <div className="w-12 h-12 rounded-xl bg-accent/5 flex items-center justify-center text-accent mb-2">
                 <Calendar className="h-6 w-6" />
@@ -109,7 +109,7 @@ export default function SuccessState() {
                       className={`p-2 text-xs font-semibold rounded-lg text-center cursor-pointer transition-all ${
                         isAvailable
                           ? 'bg-accent/5 text-accent border border-accent/20 hover:bg-accent hover:text-white'
-                          : 'text-neutral-300 pointer-events-none'
+                          : 'text-neutral-300 dark:text-neutral-700 pointer-events-none'
                       }`}
                     >
                       {day}

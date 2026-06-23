@@ -29,7 +29,7 @@ export default function SolutionTracks({ onSelectTrack }: SolutionTracksProps) {
   };
 
   return (
-    <section id="tracks" className="py-24 md:py-32 bg-neutral-50/50 border-y border-border">
+    <section id="tracks" className="py-24 md:py-32 bg-neutral-50/50 dark:bg-neutral-950/20 border-y border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
@@ -50,7 +50,7 @@ export default function SolutionTracks({ onSelectTrack }: SolutionTracksProps) {
           {TRACKS.map((track, idx) => (
             <SectionReveal key={track.id} direction="up" delay={idx * 0.1}>
               <div className="h-full transition-transform duration-300 hover:scale-[1.02]">
-                <Card className="h-full border border-border bg-white shadow-card rounded-3xl overflow-hidden flex flex-col justify-between">
+                <Card className="h-full border border-border bg-card-bg shadow-card rounded-3xl overflow-hidden flex flex-col justify-between">
                   
                   {/* Top: Header Info */}
                   <CardContent className="p-8 md:p-10 flex flex-col gap-6">
@@ -58,7 +58,7 @@ export default function SolutionTracks({ onSelectTrack }: SolutionTracksProps) {
                       <div className="w-12 h-12 rounded-xl bg-accent/5 flex items-center justify-center">
                         {getIcon(track.id)}
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-neutral-100 text-muted">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-muted">
                         {track.id === 'corporate' ? 'Professional' : 'Exam Prep'}
                       </span>
                     </div>

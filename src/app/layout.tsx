@@ -93,8 +93,25 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable} h-full scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${sora.variable} h-full scroll-smooth`} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var savedTheme = localStorage.getItem('theme');
+                  var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -108,7 +125,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </head>
-      <body className="min-h-full font-sans antialiased text-foreground bg-white flex flex-col">
+      <body className="min-h-full font-sans antialiased text-foreground bg-background flex flex-col">
         <ScrollProgress />
         {children}
       </body>

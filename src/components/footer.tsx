@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border bg-white py-12">
+    <footer className="border-t border-border bg-background py-12">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Branding */}
         <div className="text-center md:text-left">

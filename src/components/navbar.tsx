@@ -4,9 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import { NAV } from '@/lib/constants';
 import { useAnalytics } from '@/hooks/use-analytics';
+import { Sun, Moon } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
   const { trackEvent } = useAnalytics();
 
   useEffect(() => {
@@ -14,8 +18,36 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Initialize theme state from DOM class asynchronously to avoid synchronous effect state updates
+    const frameId = requestAnimationFrame(() => {
+      setMounted(true);
+      const isDark = document.documentElement.classList.contains('dark');
+      setTheme(isDark ? 'dark' : 'light');
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(frameId);
+    };
   }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    if (nextTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+    trackEvent({
+      category: 'Theme',
+      action: 'toggle_theme',
+      label: nextTheme,
+    });
+  };
 
   const handleNavClick = (sectionId: string, buttonLabel: string) => {
     trackEvent({
@@ -78,6 +110,30 @@ export default function Navbar() {
 
         {/* Right Side: Navigation Buttons */}
         <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full border border-border hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200 cursor-pointer flex items-center justify-center w-9 h-9 overflow-hidden text-foreground bg-transparent"
+            aria-label="Toggle theme"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {mounted && (
+                <motion.div
+                  key={theme}
+                  initial={{ y: theme === 'light' ? 12 : -12, opacity: 0, rotate: theme === 'light' ? 45 : -45 }}
+                  animate={{ y: 0, opacity: 1, rotate: 0 }}
+                  exit={{ y: theme === 'light' ? -12 : 12, opacity: 0, rotate: theme === 'light' ? -45 : 45 }}
+                  transition={{ duration: 0.15 }}
+                  className="flex items-center justify-center"
+                >
+                  {theme === 'light' ? (
+                    <Sun className="w-4 h-4 text-amber-500 fill-amber-500/20" />
+                  ) : (
+                    <Moon className="w-4 h-4 text-indigo-400 fill-indigo-400/20" />
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
           <Button
             variant="outline"
             size="sm"

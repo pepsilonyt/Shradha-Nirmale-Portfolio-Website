@@ -15,8 +15,14 @@ export default function StickyCTA({ onClick }: StickyCTAProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show sticky CTA when scrolled past 600px
-      setIsVisible(window.scrollY > 650);
+      const isPastHero = window.scrollY > 650;
+      
+      // Hide the sticky CTA if we are close to the bottom of the page (footer area)
+      const pageHeight = document.documentElement.scrollHeight;
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const isNearBottom = (pageHeight - scrollPosition) < 180;
+
+      setIsVisible(isPastHero && !isNearBottom);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -39,7 +45,7 @@ export default function StickyCTA({ onClick }: StickyCTAProps) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-white/80 backdrop-blur-md border-t border-border flex items-center justify-center shadow-lg"
+          className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-background/80 backdrop-blur-md border-t border-border flex items-center justify-center shadow-lg"
         >
           <div className="max-w-7xl w-full flex flex-col sm:flex-row items-center justify-between gap-4 px-6 md:px-12">
             <p className="hidden md:block font-display font-medium text-foreground text-sm">

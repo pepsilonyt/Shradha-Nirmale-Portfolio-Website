@@ -22,7 +22,7 @@ export default function FAQ() {
     : FAQS.filter((faq) => faq.category === activeCategory);
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-white relative border-t border-border">
+    <section id="faq" className="py-24 md:py-32 bg-background relative border-t border-border">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         
         {/* Section Header */}
@@ -47,7 +47,7 @@ export default function FAQ() {
               className={`px-5 py-2 text-xs md:text-sm font-semibold rounded-full border transition-all cursor-pointer ${
                 activeCategory === cat
                   ? 'bg-accent border-accent text-white shadow-sm'
-                  : 'bg-white border-border text-muted hover:border-neutral-300 hover:text-foreground'
+                  : 'bg-card-bg border-border text-muted hover:border-neutral-300 dark:hover:border-neutral-700 hover:text-foreground'
               }`}
             >
               {cat}
@@ -59,7 +59,7 @@ export default function FAQ() {
         <SectionReveal direction="up">
           <Accordion type="single" collapsible className="w-full space-y-2">
             {filteredFaqs.map((faq) => (
-              <AccordionItem key={faq.id} value={faq.id} className="border border-border rounded-2xl px-6 bg-neutral-50/20 hover:bg-neutral-50/50 transition-colors duration-200">
+              <AccordionItem key={faq.id} value={faq.id} className="border border-border rounded-2xl px-6 bg-neutral-50/20 dark:bg-neutral-900/10 hover:bg-neutral-50/50 dark:hover:bg-neutral-900/30 transition-colors duration-200">
                 <AccordionTrigger className="font-display font-semibold text-base py-5 text-foreground">
                   {faq.question}
                 </AccordionTrigger>

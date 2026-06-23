@@ -207,7 +207,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
         </div>
 
         {/* Form Container Card */}
-        <div className="rounded-3xl border border-border bg-white shadow-card p-8 md:p-12 relative overflow-hidden">
+        <div className="rounded-3xl border border-border bg-card-bg shadow-card p-8 md:p-12 relative overflow-hidden">
           
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <AnimatePresence mode="wait">
@@ -240,8 +240,8 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                         {...register('track')}
                         className="sr-only peer"
                       />
-                      <div className="h-full p-6 rounded-2xl border border-border bg-white transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 hover:border-neutral-300 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/5 text-accent flex items-center justify-center font-display font-bold">
+                      <div className="h-full p-6 rounded-2xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center font-display font-bold">
                           C
                         </div>
                         <div>
@@ -259,8 +259,8 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                         {...register('track')}
                         className="sr-only peer"
                       />
-                      <div className="h-full p-6 rounded-2xl border border-border bg-white transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 hover:border-neutral-300 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/5 text-accent flex items-center justify-center font-display font-bold">
+                      <div className="h-full p-6 rounded-2xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center font-display font-bold">
                           D
                         </div>
                         <div>
@@ -278,8 +278,8 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                         {...register('track')}
                         className="sr-only peer"
                       />
-                      <div className="h-full p-6 rounded-2xl border border-border bg-white transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 hover:border-neutral-300 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/5 text-accent flex items-center justify-center font-display font-bold">
+                      <div className="h-full p-6 rounded-2xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center font-display font-bold">
                           B
                         </div>
                         <div>
@@ -321,7 +321,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <select
                             id="celpipTargetScore"
                             {...register('celpipTargetScore')}
-                            className="flex h-12 w-full rounded-2xl border border-border bg-white px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
+                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer"
                           >
                             <option value="">Select Band...</option>
                             <option value="7">Band 7</option>
@@ -359,7 +359,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                                 {...register('celpipCurrentLevel')}
                                 className="sr-only peer"
                               />
-                              <div className="p-3 text-center rounded-xl border border-border text-sm font-semibold hover:bg-neutral-50 peer-checked:border-accent peer-checked:bg-accent/5">
+                              <div className="p-3 text-center rounded-xl border border-border text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10">
                                 {level === 'below-7' ? 'Below 7' : level === '9-plus' ? '9+' : `Band ${level}`}
                               </div>
                             </label>
@@ -371,7 +371,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                         <Label>Select Weakest Skills (Focus Areas)</Label>
                         <div className="grid grid-cols-2 gap-3">
                           {['Speaking', 'Writing', 'Reading', 'Listening'].map((skill) => (
-                            <label key={skill} className="flex items-center gap-3 p-3 rounded-xl border border-border cursor-pointer hover:bg-neutral-50">
+                            <label key={skill} className="flex items-center gap-3 p-3 rounded-xl border border-border cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-900">
                               <input
                                 type="checkbox"
                                 value={skill}
@@ -407,7 +407,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <select
                             id="detTargetScore"
                             {...register('detTargetScore')}
-                            className="flex h-12 w-full rounded-2xl border border-border bg-white px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
+                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer"
                           >
                             <option value="">Select Score...</option>
                             <option value="100">100 - 105</option>
@@ -442,7 +442,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                             { value: 'some-prep', label: 'I did some preparation already' },
                             { value: 'retaking', label: 'I am retaking to boost my score' },
                           ].map((option) => (
-                            <label key={option.value} className="flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:bg-neutral-50">
+                            <label key={option.value} className="flex items-center gap-3 p-4 rounded-xl border border-border cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-900">
                               <input
                                 type="radio"
                                 value={option.value}
@@ -508,7 +508,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                             'Client negotiations',
                             'Leadership confidence',
                           ].map((item) => (
-                            <label key={item} className="flex items-center gap-3 p-3.5 rounded-xl border border-border cursor-pointer hover:bg-neutral-50">
+                            <label key={item} className="flex items-center gap-3 p-3.5 rounded-xl border border-border cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-900">
                               <input
                                 type="checkbox"
                                 value={item}
@@ -591,7 +591,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                       <select
                         id="timezone"
                         {...register('timezone')}
-                        className="flex h-12 w-full rounded-2xl border border-border bg-white px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
+                        className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer"
                       >
                         <option value="IST">India Standard Time (IST)</option>
                         <option value="EST">Eastern Time (EST)</option>

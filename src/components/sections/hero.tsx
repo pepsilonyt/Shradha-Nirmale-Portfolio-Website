@@ -37,7 +37,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
   };
 
   return (
-    <section className="relative min-h-screen pt-32 pb-24 md:py-40 bg-white overflow-hidden">
+    <section className="relative min-h-screen pt-32 pb-24 md:py-40 bg-background overflow-hidden">
       {/* Subtle Background Grid */}
       <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
       
@@ -56,7 +56,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-50 border border-border text-xs md:text-sm font-semibold text-foreground"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-50 dark:bg-neutral-900 border border-border text-xs md:text-sm font-semibold text-foreground"
             >
               <span className="text-amber-500">★★★★★</span>
               <span>{HERO.socialProof}</span>
@@ -130,7 +130,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="relative rounded-3xl border border-border bg-white/70 backdrop-blur-xl p-6 shadow-card max-w-lg mx-auto"
+              className="relative rounded-3xl border border-border bg-card-bg/70 backdrop-blur-xl p-6 shadow-card max-w-lg mx-auto"
             >
               {/* Dashboard Header */}
               <div className="flex items-center justify-between pb-6 border-b border-border">
@@ -155,7 +155,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                     <span className="text-emerald-500 font-semibold">Ready</span>
                   </div>
                   <div className="space-y-1.5">
-                    <div className="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: '85%' }}
@@ -163,7 +163,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                         className="h-full bg-accent rounded-full"
                       />
                     </div>
-                    <div className="h-2 w-full bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: '62%' }}
@@ -175,7 +175,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
                 </div>
 
                 {/* Score Improvement Chart Mockup */}
-                <div className="p-4 rounded-2xl bg-neutral-50/50 border border-border/60">
+                <div className="p-4 rounded-2xl bg-neutral-50/50 dark:bg-neutral-900/30 border border-border/60">
                   <div className="flex justify-between items-center mb-3">
                     <span className="text-xs font-semibold text-muted">Weekly Score Acceleration</span>
                     <span className="text-xs font-bold text-accent">+24%</span>
@@ -198,14 +198,14 @@ export default function Hero({ onCTAClick }: HeroProps) {
                 </div>
 
                 {/* Progress Wheel and Bottleneck Identifier */}
-                <div className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-white">
+                <div className="flex items-center gap-4 p-3 rounded-2xl border border-border bg-card-bg">
                   <div className="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
                     <svg className="w-full h-full transform -rotate-90">
                       <circle
                         cx="32"
                         cy="32"
                         r="26"
-                        stroke="#F5F5F5"
+                        stroke="var(--border)"
                         strokeWidth="5"
                         fill="transparent"
                       />
@@ -239,9 +239,9 @@ export default function Hero({ onCTAClick }: HeroProps) {
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
-              className="absolute -top-6 -right-6 md:right-4 bg-white border border-border shadow-card p-3 rounded-2xl flex items-center gap-2.5 z-10"
+              className="absolute -top-6 -right-6 md:right-4 bg-card-bg border border-border shadow-card p-3 rounded-2xl flex items-center gap-2.5 z-10"
             >
-              <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                 <Award className="h-4 w-4" />
               </div>
               <div>
@@ -253,7 +253,7 @@ export default function Hero({ onCTAClick }: HeroProps) {
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute -bottom-8 -left-6 md:left-4 bg-white border border-border shadow-card p-3 rounded-2xl flex items-center gap-2.5 z-10"
+              className="absolute -bottom-8 -left-6 md:left-4 bg-card-bg border border-border shadow-card p-3 rounded-2xl flex items-center gap-2.5 z-10"
             >
               <div className="w-8 h-8 rounded-lg bg-accent/5 text-accent flex items-center justify-center">
                 <Award className="h-4 w-4" />

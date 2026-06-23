@@ -24,7 +24,7 @@ export default function Empathy() {
   };
 
   return (
-    <section id="problem" className="py-24 md:py-32 bg-white relative">
+    <section id="problem" className="py-24 md:py-32 bg-background relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
@@ -37,7 +37,7 @@ export default function Empathy() {
             Traditional coaching forces you to memorize rules. But real progress requires identifying the exact cognitive bottleneck blocking you.
           </p>
         </div>
-
+ 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {PAIN_CARDS.map((card, idx) => (
@@ -46,7 +46,7 @@ export default function Empathy() {
                 whileHover={{ y: -8 }}
                 className="h-full"
               >
-                <Card className="h-full border border-border bg-white shadow-card hover:shadow-card-hover transition-all duration-300 rounded-3xl overflow-hidden flex flex-col justify-between">
+                <Card className="h-full border border-border bg-card-bg shadow-card hover:shadow-card-hover transition-all duration-300 rounded-3xl overflow-hidden flex flex-col justify-between">
                   <CardContent className="p-8 md:p-10 flex flex-col h-full justify-between">
                     
                     {/* Top part: Pain Point */}

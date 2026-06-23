@@ -43,7 +43,7 @@ export default function ExitIntentPopup({ onCTA }: ExitIntentPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => { if (!open) handleClose(); }}>
-      <DialogContent className="max-w-md p-8 rounded-3xl border border-border bg-white shadow-card-hover text-center">
+      <DialogContent className="max-w-md p-8 rounded-3xl border border-border bg-card-bg shadow-card-hover text-center">
         <DialogHeader className="items-center">
           <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xl mb-4">
             💡
