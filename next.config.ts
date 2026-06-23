@@ -1,11 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: '/Shradha-Nirmale-Portfolio-Website',
-  images: {
-    unoptimized: true,
-  },
+  /* standard next config for Vercel deployment */
 };
 
 export default nextConfig;
