@@ -12,7 +12,8 @@ import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
-import { ArrowRight, ArrowLeft, Loader2, Sparkles } from 'lucide-react';
+import { CustomSelect } from '../ui/select';
+import { ArrowRight, ArrowLeft, Loader2, Sparkles, GraduationCap, Laptop, Briefcase } from 'lucide-react';
 import { useAnalytics } from '@/hooks/use-analytics';
 
 type SmartFormProps = {
@@ -58,6 +59,13 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
   } = methods;
 
   const currentTrack = watch('track');
+
+  // Register custom select fields manually with validation rules
+  useEffect(() => {
+    register('celpipTargetScore', { required: 'Target score is required' });
+    register('detTargetScore', { required: 'Target score is required' });
+    register('timezone', { required: 'Timezone is required' });
+  }, [register]);
 
   // Sync preselected track from tracks section
   useEffect(() => {
@@ -163,19 +171,32 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
       label: data.track,
     });
 
-    // Mock network request
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    // Clear autosave
-    localStorage.removeItem('shradha-diagnostic-form');
-    setIsSubmitting(false);
+      if (!response.ok) {
+        throw new Error('Failed to dispatch diagnostic submission email');
+      }
+    } catch (err) {
+      console.error('Email Dispatch Error:', err);
+    } finally {
+      // Clear autosave and complete regardless to maintain flawless UX
+      localStorage.removeItem('shradha-diagnostic-form');
+      setIsSubmitting(false);
 
-    trackEvent({
-      category: 'Form',
-      action: 'submit_diagnostics_form_success',
-    });
-    
-    onSuccess();
+      trackEvent({
+        category: 'Form',
+        action: 'submit_diagnostics_form_success',
+      });
+      
+      onSuccess();
+    }
   };
 
   // Progress Bar percentage calculation
@@ -231,60 +252,108 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
                     {/* CELPIP Radio Card */}
-                    <label className="cursor-pointer group">
+                    <label className="cursor-pointer group relative">
                       <input
                         type="radio"
                         value="celpip"
                         {...register('track')}
                         className="sr-only peer"
                       />
-                      <div className="h-full p-6 rounded-2xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center font-display font-bold">
-                          C
-                        </div>
-                        <div>
-                          <p className="font-display font-bold text-base text-foreground">CELPIP Prep</p>
-                          <p className="text-xs text-muted mt-1 leading-snug">Canadian PR & Citizenship</p>
+                      <div className="h-full p-6 sm:p-8 rounded-3xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 hover:shadow-md flex flex-col justify-between gap-5 relative overflow-hidden group-hover:scale-[1.01] text-left">
+                        <div className="space-y-4">
+                          <div className="w-12 h-12 rounded-2xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center">
+                            <GraduationCap className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <h4 className="font-display font-extrabold text-lg text-foreground">CELPIP Prep</h4>
+                            <p className="text-xs text-accent font-semibold mt-1">Canadian PR & Express Entry</p>
+                          </div>
+                          <ul className="text-xs text-muted space-y-2 pt-2 border-t border-border/40">
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>For PR applicants needing CLB 9+</span>
+                            </li>
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>Struggling with timed speaking</span>
+                            </li>
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>Custom score-building templates</span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </label>
 
                     {/* DET Radio Card */}
-                    <label className="cursor-pointer group">
+                    <label className="cursor-pointer group relative">
                       <input
                         type="radio"
                         value="det"
                         {...register('track')}
                         className="sr-only peer"
                       />
-                      <div className="h-full p-6 rounded-2xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center font-display font-bold">
-                          D
-                        </div>
-                        <div>
-                          <p className="font-display font-bold text-base text-foreground">Duolingo test</p>
-                          <p className="text-xs text-muted mt-1 leading-snug">University Admissions</p>
+                      <div className="h-full p-6 sm:p-8 rounded-3xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 hover:shadow-md flex flex-col justify-between gap-5 relative overflow-hidden group-hover:scale-[1.01] text-left">
+                        <div className="space-y-4">
+                          <div className="w-12 h-12 rounded-2xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center">
+                            <Laptop className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <h4 className="font-display font-extrabold text-lg text-foreground">Duolingo Prep</h4>
+                            <p className="text-xs text-accent font-semibold mt-1">University Admissions</p>
+                          </div>
+                          <ul className="text-xs text-muted space-y-2 pt-2 border-t border-border/40">
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>For students targetting 120-140+</span>
+                            </li>
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>Isolate adaptive test algorithm</span>
+                            </li>
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>Production score acceleration</span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </label>
 
                     {/* Corporate Radio Card */}
-                    <label className="cursor-pointer group">
+                    <label className="cursor-pointer group relative">
                       <input
                         type="radio"
                         value="corporate"
                         {...register('track')}
                         className="sr-only peer"
                       />
-                      <div className="h-full p-6 rounded-2xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 group-hover:scale-[1.01] flex flex-col items-center text-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center font-display font-bold">
-                          B
-                        </div>
-                        <div>
-                          <p className="font-display font-bold text-base text-foreground">Corporate English</p>
-                          <p className="text-xs text-muted mt-1 leading-snug">Professional Mastery</p>
+                      <div className="h-full p-6 sm:p-8 rounded-3xl border border-border bg-card-bg transition-all duration-300 peer-checked:border-accent peer-checked:bg-accent/5 dark:peer-checked:bg-accent/10 hover:border-neutral-300 dark:hover:border-neutral-800 hover:shadow-md flex flex-col justify-between gap-5 relative overflow-hidden group-hover:scale-[1.01] text-left">
+                        <div className="space-y-4">
+                          <div className="w-12 h-12 rounded-2xl bg-accent/5 dark:bg-accent/15 text-accent flex items-center justify-center">
+                            <Briefcase className="h-6 w-6" />
+                          </div>
+                          <div>
+                            <h4 className="font-display font-extrabold text-lg text-foreground">Corporate English</h4>
+                            <p className="text-xs text-accent font-semibold mt-1">Professional Mastery</p>
+                          </div>
+                          <ul className="text-xs text-muted space-y-2 pt-2 border-t border-border/40">
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>For tech leads, managers & execs</span>
+                            </li>
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>Emails, client presentations & pitches</span>
+                            </li>
+                            <li className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                              <span>Eliminate accent self-doubt</span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </label>
@@ -318,18 +387,19 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <Label htmlFor="celpipTargetScore">Target Band Score</Label>
-                          <select
+                          <CustomSelect
                             id="celpipTargetScore"
-                            {...register('celpipTargetScore')}
-                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer [&>option]:bg-card-bg [&>option]:text-foreground"
-                          >
-                            <option value="">Select Band...</option>
-                            <option value="7">Band 7</option>
-                            <option value="8">Band 8</option>
-                            <option value="9">Band 9</option>
-                            <option value="10">Band 10</option>
-                            <option value="10-plus">Band 10+</option>
-                          </select>
+                            value={watch('celpipTargetScore') || ''}
+                            onChange={(val) => setValue('celpipTargetScore', val, { shouldValidate: true })}
+                            options={[
+                              { value: '7', label: 'Band 7' },
+                              { value: '8', label: 'Band 8' },
+                              { value: '9', label: 'Band 9' },
+                              { value: '10', label: 'Band 10' },
+                              { value: '10-plus', label: 'Band 10+' },
+                            ]}
+                            placeholder="Select Band..."
+                          />
                           {errors.celpipTargetScore && (
                             <span className="text-xs text-red-500 font-semibold">{errors.celpipTargetScore.message}</span>
                           )}
@@ -340,7 +410,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <Input
                             id="celpipExamDate"
                             type="date"
-                            {...register('celpipExamDate')}
+                            {...register('celpipExamDate', { required: 'Exam date is required' })}
                           />
                           {errors.celpipExamDate && (
                             <span className="text-xs text-red-500 font-semibold">{errors.celpipExamDate.message}</span>
@@ -375,7 +445,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                               <input
                                 type="checkbox"
                                 value={skill}
-                                {...register('celpipWeakestSkill')}
+                                {...register('celpipWeakestSkill', { required: 'Select at least one skill' })}
                                 className="rounded border-border text-accent focus:ring-accent h-4 w-4"
                               />
                               <span className="text-sm font-semibold text-foreground">{skill}</span>
@@ -404,18 +474,19 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <Label htmlFor="detTargetScore">Target DET Score</Label>
-                          <select
+                          <CustomSelect
                             id="detTargetScore"
-                            {...register('detTargetScore')}
-                            className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer [&>option]:bg-card-bg [&>option]:text-foreground"
-                          >
-                            <option value="">Select Score...</option>
-                            <option value="100">100 - 105</option>
-                            <option value="110">110 - 115</option>
-                            <option value="120">120 - 125</option>
-                            <option value="130">130 - 135</option>
-                            <option value="140">140+</option>
-                          </select>
+                            value={watch('detTargetScore') || ''}
+                            onChange={(val) => setValue('detTargetScore', val, { shouldValidate: true })}
+                            options={[
+                              { value: '100', label: '100 - 105' },
+                              { value: '110', label: '110 - 115' },
+                              { value: '120', label: '120 - 125' },
+                              { value: '130', label: '130 - 135' },
+                              { value: '140', label: '140+' },
+                            ]}
+                            placeholder="Select Score..."
+                          />
                           {errors.detTargetScore && (
                             <span className="text-xs text-red-500 font-semibold">{errors.detTargetScore.message}</span>
                           )}
@@ -426,7 +497,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <Input
                             id="detTestDate"
                             type="date"
-                            {...register('detTestDate')}
+                            {...register('detTestDate', { required: 'Test date is required' })}
                           />
                           {errors.detTestDate && (
                             <span className="text-xs text-red-500 font-semibold">{errors.detTestDate.message}</span>
@@ -478,7 +549,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <Input
                             id="corporateRole"
                             placeholder="e.g. Senior Software Engineer"
-                            {...register('corporateRole')}
+                            {...register('corporateRole', { required: 'Professional role is required' })}
                           />
                           {errors.corporateRole && (
                             <span className="text-xs text-red-500 font-semibold">{errors.corporateRole.message}</span>
@@ -490,7 +561,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                           <Input
                             id="corporateIndustry"
                             placeholder="e.g. FinTech"
-                            {...register('corporateIndustry')}
+                            {...register('corporateIndustry', { required: 'Industry is required' })}
                           />
                           {errors.corporateIndustry && (
                             <span className="text-xs text-red-500 font-semibold">{errors.corporateIndustry.message}</span>
@@ -512,7 +583,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                               <input
                                 type="checkbox"
                                 value={item}
-                                {...register('corporateChallenge')}
+                                {...register('corporateChallenge', { required: 'Select at least one challenge' })}
                                 className="rounded border-border text-accent focus:ring-accent h-4 w-4"
                               />
                               <span className="text-sm font-semibold text-foreground">{item}</span>
@@ -554,7 +625,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                       <Input
                         id="name"
                         placeholder="John Doe"
-                        {...register('name')}
+                        {...register('name', { required: 'Name is required' })}
                       />
                       {errors.name && (
                         <span className="text-xs text-red-500 font-semibold">{errors.name.message}</span>
@@ -567,7 +638,13 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                         id="email"
                         type="email"
                         placeholder="john@example.com"
-                        {...register('email')}
+                        {...register('email', {
+                          required: 'Email is required',
+                          pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: 'Invalid email address'
+                          }
+                        })}
                       />
                       {errors.email && (
                         <span className="text-xs text-red-500 font-semibold">{errors.email.message}</span>
@@ -588,18 +665,20 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
 
                     <div className="space-y-2">
                       <Label htmlFor="timezone">Your Timezone</Label>
-                      <select
+                      <CustomSelect
                         id="timezone"
-                        {...register('timezone')}
-                        className="flex h-12 w-full rounded-2xl border border-border bg-card-bg px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent text-foreground cursor-pointer [&>option]:bg-card-bg [&>option]:text-foreground"
-                      >
-                        <option value="IST">India Standard Time (IST)</option>
-                        <option value="EST">Eastern Time (EST)</option>
-                        <option value="PST">Pacific Time (PST)</option>
-                        <option value="GMT">Greenwich Mean Time (GMT)</option>
-                        <option value="CET">Central European Time (CET)</option>
-                        <option value="AEST">Australian Eastern Time (AEST)</option>
-                      </select>
+                        value={watch('timezone') || ''}
+                        onChange={(val) => setValue('timezone', val, { shouldValidate: true })}
+                        options={[
+                          { value: 'IST', label: 'India Standard Time (IST)' },
+                          { value: 'EST', label: 'Eastern Time (EST)' },
+                          { value: 'PST', label: 'Pacific Time (PST)' },
+                          { value: 'GMT', label: 'Greenwich Mean Time (GMT)' },
+                          { value: 'CET', label: 'Central European Time (CET)' },
+                          { value: 'AEST', label: 'Australian Eastern Time (AEST)' },
+                        ]}
+                        placeholder=""
+                      />
                       {errors.timezone && (
                         <span className="text-xs text-red-500 font-semibold">{errors.timezone.message}</span>
                       )}
