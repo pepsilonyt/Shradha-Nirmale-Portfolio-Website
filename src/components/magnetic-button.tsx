@@ -68,7 +68,7 @@ export default function MagneticButton({
       whileHover={{ scale: isReduced ? 1 : 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={cn(
-        'relative inline-flex items-center justify-center px-8 py-4 font-display font-semibold text-white bg-accent hover:bg-accent-hover rounded-full transition-colors shadow-cta hover:shadow-cta-hover cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2',
+        'relative inline-flex items-center justify-center px-8 py-4 font-display font-semibold text-white bg-accent hover:bg-accent-hover rounded-xl transition-colors shadow-cta hover:shadow-cta-hover cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2',
         className
       )}
     >

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Sora } from 'next/font/google';
+import { Inter, Lora } from 'next/font/google';
 import './globals.css';
 import ScrollProgress from '@/components/scroll-progress';
 import { FAQS } from '@/lib/constants';
@@ -10,8 +10,8 @@ const inter = Inter({
   display: 'swap',
 });
 
-const sora = Sora({
-  variable: '--font-sora',
+const lora = Lora({
+  variable: '--font-lora',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -93,7 +93,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable} h-full scroll-smooth`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${lora.variable} h-full scroll-smooth`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

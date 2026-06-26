@@ -46,12 +46,19 @@ export default function Empathy() {
                 whileHover={{ y: -8 }}
                 className="h-full"
               >
-                <Card className="h-full border border-border bg-card-bg shadow-card hover:shadow-card-hover transition-all duration-300 rounded-3xl overflow-hidden flex flex-col justify-between">
+                <Card className="h-full border border-border bg-card-bg shadow-card hover:shadow-card-hover transition-all duration-300 rounded-2xl overflow-hidden flex flex-col justify-between">
                   <CardContent className="p-8 md:p-10 flex flex-col h-full justify-between">
                     
                     {/* Top part: Pain Point */}
                     <div className="space-y-6">
-                      <div className="w-14 h-14 rounded-2xl bg-accent/5 flex items-center justify-center flex-shrink-0">
+                      <div className="flex items-center justify-between text-[10px] font-mono tracking-widest text-muted uppercase">
+                        <span>Diagnostic ID: DX-0{idx + 1}</span>
+                        <span className="text-red-500 font-semibold dark:text-red-400 flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                          Unresolved
+                        </span>
+                      </div>
+                      <div className="w-14 h-14 rounded-xl bg-accent/5 flex items-center justify-center flex-shrink-0">
                         {getIcon(card.id)}
                       </div>
                       <div className="space-y-3">
@@ -69,9 +76,9 @@ export default function Empathy() {
 
                     {/* Bottom part: Shradha's Solution */}
                     <div className="space-y-3">
-                      <div className="inline-flex items-center gap-1 text-xs font-bold text-accent uppercase tracking-wider">
-                        <span>The Strategy</span>
-                        <ArrowRight className="h-3 w-3" />
+                      <div className="inline-flex items-center gap-1.5 text-xs font-bold text-accent uppercase tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                        <span>Remediation Protocol</span>
                       </div>
                       <p className="text-foreground font-medium text-sm md:text-base leading-relaxed">
                         {card.solution}
@@ -108,7 +115,7 @@ export default function Empathy() {
 // Simple internal Badge component
 function Badge({ text }: { text: string }) {
   return (
-    <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
+    <span className="inline-flex items-center px-4 py-1.5 rounded-xl bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
       {text}
     </span>
   );

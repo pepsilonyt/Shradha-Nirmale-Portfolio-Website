@@ -58,7 +58,7 @@ export function CustomSelect({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex h-12 w-full items-center justify-between rounded-2xl border border-border bg-card-bg px-4 text-sm text-foreground transition-all focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer hover:border-neutral-300 dark:hover:border-neutral-800"
+        className="flex h-12 w-full items-center justify-between rounded-xl border border-border bg-card-bg px-4 text-sm text-foreground transition-all focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer hover:border-neutral-300 dark:hover:border-neutral-800"
       >
         <span className={cn('block truncate', !selectedOption && 'text-muted/70')}>
           {selectedOption ? selectedOption.label : placeholder}
@@ -79,7 +79,7 @@ export function CustomSelect({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
             transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-border bg-card-bg/95 backdrop-blur-xl p-1.5 shadow-lg shadow-black/5 dark:shadow-black/30 no-scrollbar focus:outline-none"
+            className="absolute z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-xl border border-border bg-card-bg/95 backdrop-blur-xl p-1.5 shadow-lg shadow-black/5 dark:shadow-black/30 no-scrollbar focus:outline-none"
           >
             {/* Reset / Placeholder option if needed */}
             {placeholder && (

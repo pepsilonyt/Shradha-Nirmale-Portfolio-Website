@@ -27,7 +27,7 @@ export default function FAQ() {
         
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
+          <span className="inline-flex items-center px-4 py-1.5 rounded-xl bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
             FAQ
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground mt-4 leading-tight">
@@ -44,7 +44,7 @@ export default function FAQ() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 text-xs md:text-sm font-semibold rounded-full border transition-all cursor-pointer ${
+              className={`px-5 py-2 text-xs md:text-sm font-semibold rounded-xl border transition-all cursor-pointer ${
                 activeCategory === cat
                   ? 'bg-accent border-accent text-white shadow-sm'
                   : 'bg-card-bg border-border text-muted hover:border-neutral-300 dark:hover:border-neutral-700 hover:text-foreground'
@@ -72,7 +72,7 @@ export default function FAQ() {
         </SectionReveal>
 
         {/* Still have questions CTA */}
-        <div className="mt-16 p-8 rounded-3xl border border-border bg-neutral-50/50 dark:bg-neutral-900/20 text-center space-y-4 max-w-2xl mx-auto">
+        <div className="mt-16 p-8 rounded-2xl border border-border bg-neutral-50/50 dark:bg-neutral-900/20 text-center space-y-4 max-w-2xl mx-auto">
           <h3 className="font-display font-bold text-lg md:text-xl text-foreground">
             Still have questions?
           </h3>
@@ -87,7 +87,7 @@ export default function FAQ() {
                   el.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl text-sm font-semibold shadow-md hover:shadow-lg transition-all cursor-pointer"
             >
               <span>Get Free Diagnostic Audit</span>
             </button>

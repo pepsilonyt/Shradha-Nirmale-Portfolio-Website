@@ -43,9 +43,9 @@ export default function ExitIntentPopup({ onCTA }: ExitIntentPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => { if (!open) handleClose(); }}>
-      <DialogContent className="max-w-md p-8 rounded-3xl border border-border bg-card-bg shadow-card-hover text-center">
+      <DialogContent className="max-w-md p-8 rounded-2xl border border-border bg-card-bg shadow-card-hover text-center">
         <DialogHeader className="items-center">
-          <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xl mb-4">
+          <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center text-xl mb-4">
             💡
           </div>
           <DialogTitle className="font-display font-bold text-2xl tracking-tight text-foreground text-center">
@@ -59,7 +59,7 @@ export default function ExitIntentPopup({ onCTA }: ExitIntentPopupProps) {
         <div className="flex flex-col gap-3 mt-6">
           <Button
             onClick={handleCTAClick}
-            className="w-full font-display font-semibold py-3 bg-accent hover:bg-accent-hover text-white rounded-full shadow-cta hover:shadow-cta-hover transition-all"
+            className="w-full font-display font-semibold py-3 bg-accent hover:bg-accent-hover text-white rounded-xl shadow-cta hover:shadow-cta-hover transition-all"
           >
             Find My English Bottleneck Now →
           </Button>

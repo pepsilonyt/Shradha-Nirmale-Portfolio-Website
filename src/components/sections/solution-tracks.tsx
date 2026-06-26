@@ -34,7 +34,7 @@ export default function SolutionTracks({ onSelectTrack }: SolutionTracksProps) {
         
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-24">
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
+          <span className="inline-flex items-center px-4 py-1.5 rounded-xl bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
             Programs & Tracks
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground mt-4 leading-tight">
@@ -50,7 +50,7 @@ export default function SolutionTracks({ onSelectTrack }: SolutionTracksProps) {
           {TRACKS.map((track, idx) => (
             <SectionReveal key={track.id} direction="up" delay={idx * 0.1}>
               <div className="h-full transition-transform duration-300 hover:scale-[1.02]">
-                <Card className="h-full border border-border bg-card-bg shadow-card rounded-3xl overflow-hidden flex flex-col justify-between">
+                <Card className="h-full border border-border bg-card-bg shadow-card rounded-2xl overflow-hidden flex flex-col justify-between">
                   
                   {/* Top: Header Info */}
                   <CardContent className="p-8 md:p-10 flex flex-col gap-6">
@@ -58,7 +58,7 @@ export default function SolutionTracks({ onSelectTrack }: SolutionTracksProps) {
                       <div className="w-12 h-12 rounded-xl bg-accent/5 flex items-center justify-center">
                         {getIcon(track.id)}
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-muted">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-muted">
                         {track.id === 'corporate' ? 'Professional' : 'Exam Prep'}
                       </span>
                     </div>

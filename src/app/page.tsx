@@ -14,6 +14,7 @@ import SuccessState from '@/components/sections/success-state';
 import FAQ from '@/components/sections/faq';
 import StickyCTA from '@/components/sticky-cta';
 import ExitIntentPopup from '@/components/exit-intent-popup';
+import Testimonials from '@/components/sections/testimonials';
 import { Track } from '@/lib/form-schema';
 import SectionReveal from '@/components/section-reveal';
 
@@ -42,6 +43,11 @@ export default function Home() {
         
         {/* Section 1: Hero */}
         <Hero onCTAClick={scrollToForm} />
+
+        {/* Section 1.5: Testimonials */}
+        <SectionReveal direction="up" delay={0.1}>
+          <Testimonials />
+        </SectionReveal>
 
         {/* Section 2: Empathy / Problem */}
         <SectionReveal direction="up" delay={0.1}>

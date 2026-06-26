@@ -45,7 +45,7 @@ export default function Footer() {
                 el.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="px-8 py-3.5 bg-accent hover:bg-accent-hover text-white text-sm font-semibold rounded-full shadow-cta hover:shadow-cta-hover transition-all cursor-pointer"
+            className="px-8 py-3.5 bg-accent hover:bg-accent-hover text-white text-sm font-semibold rounded-xl shadow-cta hover:shadow-cta-hover transition-all cursor-pointer"
           >
             Book a Free Strategy Session
           </button>

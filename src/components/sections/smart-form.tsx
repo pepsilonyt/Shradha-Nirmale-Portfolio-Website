@@ -706,7 +706,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                   type="button"
                   onClick={handleBack}
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors disabled:opacity-50 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   <span>Back</span>
@@ -728,7 +728,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="font-display font-semibold bg-accent hover:bg-accent-hover text-white shadow-cta hover:shadow-cta-hover transition-all py-3 px-8 rounded-full flex items-center justify-center gap-2 min-w-[200px] cursor-pointer"
+                  className="font-display font-semibold bg-accent hover:bg-accent-hover text-white shadow-cta hover:shadow-cta-hover transition-all py-3 px-8 rounded-xl flex items-center justify-center gap-2 min-w-[200px] cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>

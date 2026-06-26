@@ -114,27 +114,50 @@ export const FAQS = [
     answer: 'The DET is an adaptive test — the algorithm adjusts difficulty based on your answers. I teach you to understand how it scores, what skills carry the most weight, and how to maximize your performance within its unique format.',
   },
   {
-    id: 'f5',
+    id: 'f6',
     category: 'Payment',
     question: 'What are the payment options?',
-    answer: 'Sessions are booked and paid through Preply. You pay per session or can purchase a bundle for a discounted rate. All major credit cards and PayPal are accepted through the Preply platform.',
+    answer: 'Sessions are booked and paid through Preply, which accepts all major credit cards and PayPal. For direct engagement, Wise, secure bank transfers, and Google Pay are also supported.',
   },
   {
-    id: 'f6',
+    id: 'f7',
     category: 'Payment',
     question: 'Do you offer refunds if I am not satisfied?',
     answer: "Preply offers a satisfaction guarantee. If you are not satisfied after your first trial lesson, Preply will refund your lesson credits. Please review Preply's refund policy for full details.",
   },
   {
-    id: 'f7',
+    id: 'f8',
     category: 'Preply',
     question: 'Why do you use Preply instead of direct booking?',
     answer: 'Preply provides a secure, globally trusted payment infrastructure, verified tutor profiles, and student protection guarantees. It also makes scheduling across time zones seamless for my international students.',
   },
   {
-    id: 'f8',
+    id: 'f9',
     category: 'Preply',
     question: 'Can I message you before booking a session?',
     answer: 'Yes! On Preply you can send me a free message before your trial lesson. I respond within 24 hours and we can discuss your goals and whether I am the right fit before you commit.',
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    name: 'Nishad S.',
+    role: 'Software Architect, Toronto',
+    text: 'After multiple failed attempts at CELPIP, Shradha identified my syntax pattern issue in just 20 minutes. My score jumped from Band 7 to 9.',
+  },
+  {
+    name: 'Apoorwa M.',
+    role: 'Data Scientist, Chicago',
+    text: 'The Duolingo English Test felt completely random until I learned the algorithm rules. Highly strategic guidance.',
+  },
+  {
+    name: 'Siddharth P.',
+    role: 'Engineering Manager, Berlin',
+    text: 'Corporate English coaching helped me transition from being a strong developer to a confident executive communicator in high-stakes meetings.',
+  },
+  {
+    name: 'Lu Chen',
+    role: 'Global Operations Lead, Singapore',
+    text: 'Clear, academic, and extremely professional. The diagnostics blueprint isolated my precise speech timing errors.',
   },
 ];

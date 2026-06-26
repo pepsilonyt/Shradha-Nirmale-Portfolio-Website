@@ -20,7 +20,7 @@ export default function InterdisciplinaryEdge() {
           {/* Left: Narrative */}
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-4">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
+              <span className="inline-flex items-center px-4 py-1.5 rounded-xl bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
                 The Analytical Edge
               </span>
               <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground leading-tight">
@@ -53,166 +53,63 @@ export default function InterdisciplinaryEdge() {
             </div>
           </div>
 
-          {/* Right: Scientific Framework Diagrams Mockup */}
-          <div className="lg:col-span-6 space-y-6">
-            
-            {/* Card 1: Processing Timeline */}
-            <SectionReveal direction="left" delay={0.1}>
-              <div className="rounded-3xl border border-border bg-card-bg p-6 shadow-card hover:shadow-card-hover transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center text-accent">
-                    <Brain className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-base text-foreground">
-                      Cognitive Optimization Pathway
-                    </h3>
-                    <p className="text-[10px] text-muted uppercase tracking-wider">Learning Architecture</p>
-                  </div>
-                </div>
-
-                {/* SVG Animated Timeline */}
-                <div className="relative pt-2">
-                  <svg className="w-full h-10" fill="none" viewBox="0 0 400 40">
-                    {/* Background line */}
-                    <line x1="20" y1="20" x2="380" y2="20" stroke="var(--border)" strokeWidth="2" strokeDasharray="4 4" />
-                    {/* Active pathway line */}
-                    <motion.line
-                      x1="20"
-                      y1="20"
-                      x2="380"
-                      y2="20"
-                      stroke="#2563EB"
-                      strokeWidth="2"
-                      strokeDasharray="360"
-                      initial={{ strokeDashoffset: 360 }}
-                      whileInView={{ strokeDashoffset: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, delay: 0.2 }}
-                    />
-                    {/* Steps / nodes */}
-                    {[20, 110, 200, 290, 380].map((cx, i) => (
-                      <motion.circle
-                        key={i}
-                        cx={cx}
-                        cy="20"
-                        r="6"
-                        fill={i < 4 ? '#2563EB' : 'var(--card-bg)'}
-                        stroke="#2563EB"
-                        strokeWidth="3"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + i * 0.2 }}
-                      />
-                    ))}
-                  </svg>
-                  <div className="grid grid-cols-5 text-center text-[10px] font-bold text-muted mt-1 uppercase tracking-wider">
-                    <span>Audit</span>
-                    <span>Isolate</span>
-                    <span>Model</span>
-                    <span>Drill</span>
-                    <span>Unlock</span>
-                  </div>
-                </div>
-              </div>
-            </SectionReveal>
-
-            {/* Card 2: Error Diagnosis Grid */}
+          {/* Right: Executive Memorandum Card */}
+          <div className="lg:col-span-6">
             <SectionReveal direction="left" delay={0.2}>
-              <div className="rounded-3xl border border-border bg-card-bg p-6 shadow-card hover:shadow-card-hover transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center text-accent">
-                    <Database className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-base text-foreground">
-                      Diagnostic Error Matrix
-                    </h3>
-                    <p className="text-[10px] text-muted uppercase tracking-wider">Real-time pattern isolation</p>
-                  </div>
+              <div className="rounded-2xl border border-border bg-card-bg/60 p-8 md:p-10 shadow-card hover:shadow-card-hover transition-all duration-300 relative overflow-hidden">
+                {/* Official watermarked-style background text or border line */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-bl-full flex items-center justify-center font-mono text-xs font-bold text-accent/20">
+                  OFFICIAL
                 </div>
 
-                <div className="flex items-center gap-6">
-                  {/* Grid visualization */}
-                  <div className="grid grid-cols-6 gap-2 w-32 shrink-0">
-                    {Array.from({ length: 24 }).map((_, i) => {
-                      const isActive = [3, 8, 14, 19, 20].includes(i);
-                      return (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0.1, scale: 0.8 }}
-                          whileInView={{ opacity: isActive ? 1 : 0.1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.1 + (i % 6) * 0.05 }}
-                          className={`h-3 w-3 rounded-full ${isActive ? 'bg-accent shadow-glow' : 'bg-neutral-200 dark:bg-neutral-800'}`}
-                        />
-                      );
-                    })}
+                <div className="space-y-6">
+                  {/* Memo Header */}
+                  <div className="border-b-2 border-border pb-6 space-y-4 font-mono text-xs text-muted">
+                    <div className="text-center font-display font-bold text-sm tracking-widest text-foreground uppercase border-b border-border/40 pb-2">
+                      MEMORANDUM
+                    </div>
+                    <div className="grid grid-cols-4 gap-y-1.5">
+                      <span className="font-bold text-foreground">TO:</span>
+                      <span className="col-span-3">Executive Candidates & High-Scoring Aspirants</span>
+                      <span className="font-bold text-foreground">FROM:</span>
+                      <span className="col-span-3">Shradha Nirmale, Senior Learning Strategist</span>
+                      <span className="font-bold text-foreground">SUBJECT:</span>
+                      <span className="col-span-3">The Cognitive Optimization Paradigm</span>
+                    </div>
                   </div>
-                  
-                  {/* Copy */}
-                  <div className="space-y-1">
-                    <p className="text-xs font-bold text-foreground">
-                      Precision Diagnosis vs Intuition
+
+                  {/* Memo Content */}
+                  <div className="space-y-6 text-sm text-foreground/90 leading-relaxed font-sans">
+                    <p>
+                      Traditional preparation models rely heavily on brute-force repetition. This memo outlines the structural methodology utilized in our programs to bypass plateaus.
                     </p>
-                    <p className="text-xs text-muted leading-relaxed">
-                      We track error frequencies across reading timing, speech hesitancy metrics, and sentence coordination templates, targeting your highest-leverage areas.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </SectionReveal>
-
-            {/* Card 3: Cognitive Load Distribution */}
-            <SectionReveal direction="left" delay={0.3}>
-              <div className="rounded-3xl border border-border bg-card-bg p-6 shadow-card hover:shadow-card-hover transition-all duration-300">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-accent/5 flex items-center justify-center text-accent">
-                    <Cpu className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-display font-bold text-base text-foreground">
-                      Cognitive Load Control
-                    </h3>
-                    <p className="text-[10px] text-muted uppercase tracking-wider">Decreasing processing bottlenecks</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between gap-4">
-                  {/* Concentric rings */}
-                  <div className="relative w-24 h-24 flex items-center justify-center shrink-0">
-                    <div className="absolute inset-0 rounded-full border border-border flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center">
-                        <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center" />
+                    <div className="space-y-4 pl-4 border-l border-accent/35">
+                      <div>
+                        <p className="font-bold text-foreground font-display text-sm tracking-wide">01 / BOTTLENECK ISOLATION</p>
+                        <p className="text-muted text-xs mt-1">
+                          Instead of broad curriculum drills, we diagnose and isolate the specific speech coordination latency or reading pacing issues halting score improvements.
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-foreground font-display text-sm tracking-wide">02 / COGNITIVE DECONGESTION</p>
+                        <p className="text-muted text-xs mt-1">
+                          Under strict testing conditions, working memory is the ultimate constraint. We model structured retrieval pathways to free up mental resources for complex lexical selection.
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-foreground font-display text-sm tracking-wide">03 / EMPIRICAL FEEDBACK</p>
+                        <p className="text-muted text-xs mt-1">
+                          Performance is mapped through rigorous error frequencies, tracking exactly which speech and syntactic templates fail under time pressure.
+                        </p>
                       </div>
                     </div>
-                    {/* Animated active indicators */}
-                    <motion.div
-                      className="absolute inset-2 rounded-full border border-dashed border-accent/20"
-                      animate={{ rotate: 360 }}
-                      transition={{ repeat: Infinity, duration: 15, ease: 'linear' }}
-                    />
-                    <motion.div
-                      className="absolute inset-6 rounded-full border border-dashed border-accent"
-                      animate={{ rotate: -360 }}
-                      transition={{ repeat: Infinity, duration: 8, ease: 'linear' }}
-                    />
-                    <span className="text-[10px] font-bold text-accent">Load</span>
-                  </div>
-
-                  <div className="space-y-1">
-                    <p className="text-xs font-bold text-foreground">
-                      Reducing Working Memory Strain
-                    </p>
-                    <p className="text-xs text-muted leading-relaxed">
-                      Exam templates are structured to offload simple sentence scheduling, leaving your brain completely free to focus on advanced argumentation and vocabulary.
+                    <p className="text-xs text-muted italic font-mono pt-2">
+                      Authentication Protocol Status: Active
                     </p>
                   </div>
                 </div>
               </div>
             </SectionReveal>
-
           </div>
 
         </div>

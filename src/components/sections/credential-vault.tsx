@@ -32,7 +32,7 @@ export default function CredentialVault() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-xl">
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
+            <span className="inline-flex items-center px-4 py-1.5 rounded-xl bg-accent/5 border border-accent/10 text-xs font-bold text-accent uppercase tracking-wider">
               Verification & Trust
             </span>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-foreground mt-4 leading-tight">
@@ -45,32 +45,28 @@ export default function CredentialVault() {
           
           {/* Scroll instruction for mobile/desktop */}
           <div className="text-xs text-muted font-semibold uppercase tracking-wider">
-            <span className="hidden md:inline">Click any credential to inspect verification</span>
-            <span className="inline md:hidden flex items-center gap-1 text-accent animate-pulse">
-              <span>Swipe to view credentials</span>
-              <ChevronRight className="h-3.5 w-3.5 inline" />
-            </span>
+            <span>Click any credential to inspect verification</span>
           </div>
         </div>
 
-        {/* Carousel Container */}
+        {/* Grid Container */}
         <SectionReveal direction="up">
-          <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar -mx-6 px-6 md:mx-0 md:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {CERTS.map((cert) => (
               <div
                 key={cert.id}
                 onClick={() => setActiveCert(cert)}
-                className="min-w-[280px] sm:min-w-[320px] max-w-[360px] snap-start shrink-0 cursor-zoom-in transition-all duration-300 hover:scale-[1.03] group"
+                className="cursor-zoom-in transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 group"
               >
-                <Card className="h-full border border-border bg-neutral-50/50 dark:bg-neutral-900/40 hover:bg-card-bg shadow-card hover:shadow-card-hover rounded-3xl overflow-hidden flex flex-col justify-between">
+                <Card className="h-full border border-border bg-neutral-50/50 dark:bg-neutral-900/40 hover:bg-card-bg shadow-card hover:shadow-card-hover rounded-2xl overflow-hidden flex flex-col justify-between">
                   <CardContent className="p-6 sm:p-8 flex flex-col gap-6 h-full justify-between">
                     
                     {/* Visual Certificate Placeholder */}
-                    <div className="relative aspect-[4/3] rounded-2xl bg-gradient-to-tr from-accent/10 to-accent/5 border border-accent/10 flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+                    <div className="relative aspect-[4/3] rounded-xl bg-gradient-to-tr from-accent/10 to-accent/5 border border-accent/10 flex flex-col items-center justify-center p-6 text-center overflow-hidden">
                       {/* Grid background layer in placeholder */}
                       <div className="absolute inset-0 grid-bg opacity-[0.02] pointer-events-none" />
                       
-                      <div className="w-12 h-12 rounded-full bg-card-bg flex items-center justify-center text-accent shadow-sm mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 rounded-xl bg-card-bg flex items-center justify-center text-accent shadow-sm mb-4 group-hover:scale-110 transition-transform duration-300">
                         <ZoomIn className="h-5 w-5" />
                       </div>
                       <p className="font-display font-extrabold text-sm text-foreground leading-snug">
@@ -89,7 +85,7 @@ export default function CredentialVault() {
                         </span>
                         
                         {cert.verified && (
-                          <Badge variant="success" className="gap-1 px-2.5 py-0.5 text-[10px] font-bold">
+                          <Badge variant="success" className="gap-1 px-2.5 py-0.5 text-[10px] font-bold rounded-xl">
                             <ShieldCheck className="h-3 w-3 text-green-600" />
                             <span>Verified</span>
                           </Badge>
@@ -114,9 +110,9 @@ export default function CredentialVault() {
         {/* Lightbox / Modal */}
         <Dialog open={activeCert !== null} onOpenChange={(open) => { if (!open) setActiveCert(null); }}>
           {activeCert && (
-            <DialogContent className="max-w-xl p-5 sm:p-8 rounded-3xl border border-border bg-card-bg shadow-card-hover text-center select-none">
+            <DialogContent className="max-w-xl p-5 sm:p-8 rounded-2xl border border-border bg-card-bg shadow-card-hover text-center select-none">
               <DialogHeader className="items-center pb-4 border-b border-border">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/25 px-3 py-1 rounded-full border border-green-200/50 dark:border-green-800/40 mb-3">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/25 px-3 py-1 rounded-xl border border-green-200/50 dark:border-green-800/40 mb-3">
                   <ShieldCheck className="h-4 w-4 text-green-600 dark:text-green-400" />
                   <span>Verified Educational Credential</span>
                 </div>
@@ -129,9 +125,9 @@ export default function CredentialVault() {
               </DialogHeader>
 
               {/* Certificate mock view in lightbox */}
-              <div className="my-6 sm:my-8 aspect-[4/3] rounded-2xl bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950 border border-border flex flex-col items-center justify-center p-4 sm:p-8 relative overflow-hidden">
+              <div className="my-6 sm:my-8 aspect-[4/3] rounded-xl bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950 border border-border flex flex-col items-center justify-center p-4 sm:p-8 relative overflow-hidden">
                 <div className="absolute inset-0 grid-bg opacity-[0.03] pointer-events-none" />
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-card-bg flex items-center justify-center shadow-sm mb-3 sm:mb-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-card-bg flex items-center justify-center shadow-sm mb-3 sm:mb-4">
                   🏅
                 </div>
                 <h3 className="font-display font-extrabold text-sm sm:text-lg text-foreground tracking-tight px-6 sm:px-12">
@@ -163,7 +159,7 @@ export default function CredentialVault() {
               <div className="flex justify-end gap-3 mt-2 sm:mt-4">
                 <button
                   onClick={() => setActiveCert(null)}
-                  className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-border text-xs sm:text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors cursor-pointer"
+                  className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-xl border border-border text-xs sm:text-sm font-semibold hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors cursor-pointer"
                 >
                   Close Vault
                 </button>
@@ -177,7 +173,7 @@ export default function CredentialVault() {
             href="https://1drv.ms/f/c/f4ebd9bd1dcddc1c/IgAc3M0dvdnrIID0JAQAAAAAAT2oEWoh-TtTK-wmZD5NYyA?e=ucsBDZ"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-foreground hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:text-accent hover:border-neutral-300 dark:hover:border-neutral-800 transition-all font-display font-semibold text-sm shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-foreground hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:text-accent hover:border-neutral-300 dark:hover:border-neutral-800 transition-all font-display font-semibold text-sm shadow-sm cursor-pointer"
           >
             <span>View All Verified CXL Certificates (OneDrive) →</span>
           </a>

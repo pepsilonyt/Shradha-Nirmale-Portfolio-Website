@@ -93,7 +93,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMenuOpen ? 'glass-nav py-4 shadow-sm' : 'bg-transparent py-6'
+        isScrolled || isMenuOpen ? 'bg-background/95 border-b border-border py-4 shadow-sm' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -132,7 +132,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full border border-border hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200 cursor-pointer flex items-center justify-center w-9 h-9 overflow-hidden text-foreground bg-transparent"
+            className="p-2 rounded-xl border border-border hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200 cursor-pointer flex items-center justify-center w-9 h-9 overflow-hidden text-foreground bg-transparent"
             aria-label="Toggle theme"
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -155,30 +155,16 @@ export default function Navbar() {
             </AnimatePresence>
           </button>
           <Button
-            variant="outline"
-            size="sm"
-            onClick={() => handleExternalClick('LinkedIn')}
-            asChild
-            className="hidden sm:inline-flex"
-          >
-            <a href={NAV.linkedin} target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-          </Button>
-          <Button
             variant="default"
             size="sm"
-            onClick={() => handleExternalClick('Preply')}
-            asChild
+            onClick={() => handleNavClick('form', 'Connect with me 🔗')}
             className="hidden sm:inline-flex"
           >
-            <a href={NAV.preply} target="_blank" rel="noopener noreferrer">
-              Book on Preply
-            </a>
+            Connect with me 🔗
           </Button>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 rounded-full border border-border hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200 cursor-pointer flex items-center justify-center w-9 h-9 md:hidden text-foreground"
+            className="p-2 rounded-xl border border-border hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200 cursor-pointer flex items-center justify-center w-9 h-9 md:hidden text-foreground"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -194,7 +180,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden glass-nav border-t border-border overflow-hidden absolute top-full left-0 right-0 z-40 shadow-lg"
+            className="md:hidden border-b border-border bg-background overflow-hidden absolute top-full left-0 right-0 z-40 shadow-lg"
           >
             <div className="px-6 py-6 flex flex-col gap-4 bg-background/95 backdrop-blur-md">
               {[
@@ -214,32 +200,15 @@ export default function Navbar() {
               ))}
               <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border/40">
                 <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    handleExternalClick('LinkedIn');
-                  }}
-                  asChild
-                  className="w-full justify-center"
-                >
-                  <a href={NAV.linkedin} target="_blank" rel="noopener noreferrer">
-                    LinkedIn
-                  </a>
-                </Button>
-                <Button
                   variant="default"
                   size="sm"
                   onClick={() => {
                     setIsMenuOpen(false);
-                    handleExternalClick('Preply');
+                    handleNavClick('form', 'Connect with me 🔗');
                   }}
-                  asChild
                   className="w-full justify-center"
                 >
-                  <a href={NAV.preply} target="_blank" rel="noopener noreferrer">
-                    Book on Preply
-                  </a>
+                  Connect with me 🔗
                 </Button>
               </div>
             </div>

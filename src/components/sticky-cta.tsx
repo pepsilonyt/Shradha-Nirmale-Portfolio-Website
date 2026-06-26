@@ -45,7 +45,7 @@ export default function StickyCTA({ onClick }: StickyCTAProps) {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-background/80 backdrop-blur-md border-t border-border flex items-center justify-center shadow-lg"
+          className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-background/95 border-t border-border flex items-center justify-center shadow-lg"
         >
           <div className="max-w-7xl w-full flex flex-col sm:flex-row items-center justify-between gap-4 px-6 md:px-12">
             <p className="hidden md:block font-display font-medium text-foreground text-sm">
@@ -53,7 +53,7 @@ export default function StickyCTA({ onClick }: StickyCTAProps) {
             </p>
             <Button
               onClick={handleCTAClick}
-              className="w-full sm:w-auto font-display font-semibold bg-accent hover:bg-accent-hover text-white shadow-cta hover:shadow-cta-hover transition-all py-3 px-8 rounded-full text-center"
+              className="w-full sm:w-auto font-display font-semibold bg-accent hover:bg-accent-hover text-white shadow-cta hover:shadow-cta-hover transition-all py-3 px-8 rounded-xl text-center"
             >
               Find My English Bottleneck (Free) →
             </Button>
