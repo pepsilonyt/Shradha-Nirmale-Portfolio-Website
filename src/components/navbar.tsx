@@ -116,6 +116,7 @@ export default function Navbar() {
             { id: 'tracks', label: 'Programs' },
             { id: 'edge', label: 'Methodology' },
             { id: 'vault', label: 'Credentials' },
+            { id: 'testimonials', label: 'Reviews' },
             { id: 'faq', label: 'FAQ' },
           ].map((link) => (
             <button
@@ -188,6 +189,7 @@ export default function Navbar() {
                 { id: 'tracks', label: 'Programs' },
                 { id: 'edge', label: 'Methodology' },
                 { id: 'vault', label: 'Credentials' },
+                { id: 'testimonials', label: 'Reviews' },
                 { id: 'faq', label: 'FAQ' },
               ].map((link) => (
                 <button

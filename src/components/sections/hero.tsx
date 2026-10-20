@@ -6,6 +6,7 @@ import { Shield, Target, TrendingUp, CheckCircle, Award } from 'lucide-react';
 import MagneticButton from '../magnetic-button';
 import { HERO } from '@/lib/constants';
 import { useAnalytics } from '@/hooks/use-analytics';
+import { CambridgeCeltaLogo, DuolingoPartnerLogo, IHBudapestLogo, CXLOptimizerLogo } from '@/components/partner-logos';
 
 type HeroProps = {
   onCTAClick: () => void;
@@ -150,46 +151,45 @@ export default function Hero({ onCTAClick }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="relative p-3.5 bg-card-bg border border-border rounded-2xl shadow-card max-w-sm mx-auto"
             >
-              <div className="relative overflow-hidden rounded-xl aspect-[3/4]">
+              <div className="relative overflow-hidden rounded-xl aspect-[3/4] bg-muted/10">
                 <img
                   src="/portrait.png"
                   alt="Shradha Nirmale - English Educator"
-                  className="object-cover w-full h-full filter contrast-[1.02] grayscale-[10%]"
+                  className="object-cover w-full h-full filter contrast-[1.02]"
                 />
               </div>
               <div className="mt-4 text-center">
                 <p className="font-display font-bold text-base text-foreground">Shradha Nirmale</p>
-                <p className="text-xs text-muted font-medium mt-0.5">Learning Strategist & Senior Educator</p>
+                <p className="text-xs text-muted font-medium mt-0.5">Professional Independent Test Prep Provider</p>
+                <p className="text-[11px] text-accent font-semibold mt-0.5">Cambridge CELTA · IH Budapest Certified</p>
+                <div className="inline-flex items-center gap-1.5 mt-2 px-2.5 py-1 rounded-full bg-accent/5 border border-accent/15 text-[11px] font-semibold text-foreground">
+                  <span className="text-amber-500">★★★★★</span>
+                  <span>100% 5.0★ on Preply</span>
+                </div>
               </div>
             </motion.div>
           </div>
 
         </div>
 
-        {/* Credential Rail */}
+        {/* Top Fold Credential Logos: Duolingo Partner Network, Cambridge CELTA, IH Budapest & Preply */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="border-y border-border py-5 mt-16 md:mt-24"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-14 md:mt-20 pt-8 border-t border-border"
         >
-          <div className="flex flex-wrap items-center justify-center md:justify-between gap-6 md:gap-4 text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-muted">
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
-              Cambridge CELTA
+          <div className="flex flex-col items-center text-center mb-6">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-muted">
+              Official Institutional Credentials & Global Partner Network
             </span>
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
-              Paragon CELPIP Certified
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
-              British Council IELTS Trainer
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent/60" />
-              ICF Corporate Coach
-            </span>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 max-w-6xl mx-auto items-stretch">
+            <CambridgeCeltaLogo className="w-full h-28 sm:h-32 md:h-36" />
+            <DuolingoPartnerLogo className="w-full h-28 sm:h-32 md:h-36" />
+            <IHBudapestLogo className="w-full h-28 sm:h-32 md:h-36" />
+            <CXLOptimizerLogo className="w-full h-28 sm:h-32 md:h-36" />
           </div>
         </motion.div>
 
