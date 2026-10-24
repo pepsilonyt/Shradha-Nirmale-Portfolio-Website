@@ -84,7 +84,14 @@ export default function Footer() {
           </div>
 
           {/* Right: Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-6">
+            <a
+              href={`mailto:${NAV.email}`}
+              onClick={() => handleExternalClick('Email')}
+              className="text-xs font-semibold text-muted hover:text-accent transition-colors"
+            >
+              {NAV.email}
+            </a>
             <a
               href={NAV.linkedin}
               target="_blank"

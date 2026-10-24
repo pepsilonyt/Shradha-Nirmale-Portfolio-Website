@@ -1,5 +1,6 @@
 export const NAV = {
   logo: 'Shradha N. | Learning Strategist',
+  email: 'contact@shradhalearningstrategist.com',
   linkedin: 'https://www.linkedin.com/in/shradha-nirmale-english-educator-conversion-optimizer/',
   preply: 'https://preply.in/SHRADHA6EN3044924710?ts=17811645',
   calendar: 'https://calendar.app.google/ScjHC7Ku8iBbNgHj6',

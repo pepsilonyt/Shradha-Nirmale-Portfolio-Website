@@ -4,7 +4,7 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
 
-    const recipient = 'stevera98@gmail.com';
+    const recipient = process.env.CONTACT_EMAIL || 'contact@shradhalearningstrategist.com';
     const subject = `New Diagnostic Form Submission - ${data.name || 'Anonymous'}`;
 
     // Construct a premium HTML email body
@@ -144,8 +144,9 @@ export async function POST(request: Request) {
           'Authorization': `Bearer ${resendApiKey}`,
         },
         body: JSON.stringify({
-          from: 'Portfolio Funnel <onboarding@resend.dev>', // Resend sandbox default sender
+          from: process.env.FROM_EMAIL || 'Portfolio Funnel <onboarding@resend.dev>',
           to: recipient,
+          reply_to: data.email || undefined,
           subject: subject,
           html: htmlContent,
         }),

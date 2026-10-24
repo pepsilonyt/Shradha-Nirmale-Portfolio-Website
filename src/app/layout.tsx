@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Shradha N. | Learning Strategist & English Educator',
     description: 'Premium English coaching for CELPIP, Duolingo English Test, and Corporate Communication.',
-    url: 'https://shradhanirmale.com',
+    url: 'https://shradhalearningstrategist.com',
     siteName: 'Shradha N. English Strategy',
     locale: 'en_US',
     type: 'website',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: 'Shradha N. | Learning Strategist & English Educator',
     description: 'Isolate your exact English bottleneck and fast-track your scores and career.',
   },
-  metadataBase: new URL('https://shradhanirmale.com'),
+  metadataBase: new URL('https://shradhalearningstrategist.com'),
 };
 
 export default function RootLayout({
@@ -58,7 +58,8 @@ export default function RootLayout({
     '@type': 'Person',
     'name': 'Shradha Nirmale',
     'jobTitle': 'Learning Strategist & English Educator',
-    'url': 'https://shradhanirmale.com',
+    'url': 'https://shradhalearningstrategist.com',
+    'email': 'mailto:contact@shradhalearningstrategist.com',
     'sameAs': ['https://www.linkedin.com/in/shradha-nirmale-english-educator-conversion-optimizer/'],
   };
 
