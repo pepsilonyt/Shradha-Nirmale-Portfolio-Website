@@ -15,6 +15,7 @@ import { Progress } from '../ui/progress';
 import { CustomSelect } from '../ui/select';
 import { ArrowRight, ArrowLeft, Loader2, Sparkles, GraduationCap, Laptop, Briefcase } from 'lucide-react';
 import { useAnalytics } from '@/hooks/use-analytics';
+import { NAV } from '@/lib/constants';
 
 type SmartFormProps = {
   preselectedTrack: Track | null;
@@ -60,10 +61,10 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
 
   const currentTrack = watch('track');
 
-  // Register custom select fields manually with validation rules
+  // Register custom select fields manually without conflicting global rules across tracks
   useEffect(() => {
-    register('celpipTargetScore', { required: 'Target score is required' });
-    register('detTargetScore', { required: 'Target score is required' });
+    register('celpipTargetScore');
+    register('detTargetScore');
     register('timezone', { required: 'Timezone is required' });
   }, [register]);
 
@@ -134,14 +135,27 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
       }
     } else if (step === 2) {
       if (currentTrack === 'celpip') {
-        isValid = await trigger([
-          'celpipTargetScore',
-          'celpipExamDate',
-          'celpipCurrentLevel',
-          'celpipWeakestSkill',
-        ]);
+        const targetScore = watch('celpipTargetScore');
+        if (!targetScore) {
+          methods.setError('celpipTargetScore', { message: 'Target score is required' });
+          isValid = false;
+        } else {
+          methods.clearErrors('celpipTargetScore');
+          isValid = await trigger([
+            'celpipExamDate',
+            'celpipCurrentLevel',
+            'celpipWeakestSkill',
+          ]);
+        }
       } else if (currentTrack === 'det') {
-        isValid = await trigger(['detTargetScore', 'detTestDate', 'detPrepStatus']);
+        const targetScore = watch('detTargetScore');
+        if (!targetScore) {
+          methods.setError('detTargetScore', { message: 'Target score is required' });
+          isValid = false;
+        } else {
+          methods.clearErrors('detTargetScore');
+          isValid = await trigger(['detTestDate', 'detPrepStatus']);
+        }
       } else if (currentTrack === 'corporate') {
         isValid = await trigger(['corporateRole', 'corporateIndustry', 'corporateChallenge']);
       }
@@ -199,6 +213,30 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
     }
   };
 
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    // Validate Step 3 fields
+    const isNameValid = await trigger('name');
+    const isEmailValid = await trigger('email');
+    const isTimezoneValid = await trigger('timezone');
+
+    if (!isNameValid || !isEmailValid || !isTimezoneValid) {
+      return;
+    }
+
+    // Instantly launch Google Calendar in a new tab upon user submit
+    try {
+      window.open(NAV.calendar, '_blank');
+    } catch (err) {
+      console.error('Instant calendar launch error:', err);
+    }
+
+    const formData = methods.getValues();
+    await onSubmit(formData);
+  };
+
   // Progress Bar percentage calculation
   const progressPct = ((step - 1) / 2) * 100 + 10; // offset slightly for aesthetic start
 
@@ -230,7 +268,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
         {/* Form Container Card */}
         <div className="rounded-3xl border border-border bg-card-bg shadow-card p-5 sm:p-8 md:p-12 relative overflow-hidden">
           
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={handleFormSubmit} className="space-y-8">
             <AnimatePresence mode="wait">
               
               {/* STEP 1: Track Selection */}
@@ -733,7 +771,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
                   {isSubmitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>Compiling...</span>
+                      <span>Compiling & Opening Calendar...</span>
                     </>
                   ) : (
                     <>

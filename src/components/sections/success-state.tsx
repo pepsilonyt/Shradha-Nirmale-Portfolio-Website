@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, CheckCircle2, ChevronRight, Mail, Video, ShieldCheck } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { NAV } from '@/lib/constants';
 
 export default function SuccessState() {
   
@@ -33,6 +34,10 @@ export default function SuccessState() {
     
     frame();
   }, []);
+
+  const openCalendar = () => {
+    window.open(NAV.calendar, '_blank');
+  };
 
   return (
     <section className="py-24 md:py-32 bg-background">
@@ -98,7 +103,7 @@ export default function SuccessState() {
                 </p>
               </div>
 
-              {/* Fake calendar grid just to show premium UI structure */}
+              {/* Interactive Calendar Date Grid */}
               <div className="grid grid-cols-7 gap-2 max-w-xs w-full pt-4">
                 {Array.from({ length: 14 }).map((_, i) => {
                   const day = i + 10;
@@ -106,6 +111,9 @@ export default function SuccessState() {
                   return (
                     <div
                       key={i}
+                      onClick={() => {
+                        if (isAvailable) openCalendar();
+                      }}
                       className={`p-2 text-xs font-semibold rounded-lg text-center cursor-pointer transition-all ${
                         isAvailable
                           ? 'bg-accent/5 text-accent border border-accent/20 hover:bg-accent hover:text-white'
@@ -120,7 +128,7 @@ export default function SuccessState() {
 
               <div className="pt-4 w-full flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://calendar.app.google/ScjHC7Ku8iBbNgHj6"
+                  href={NAV.calendar}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 justify-center flex-1 px-5 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all text-xs sm:text-sm text-center"
@@ -129,7 +137,7 @@ export default function SuccessState() {
                   <ChevronRight className="h-4 w-4 shrink-0" />
                 </a>
                 <a
-                  href="https://preply.in/SHRADHA6EN3044924710?ts=17811645"
+                  href={NAV.preply}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 justify-center flex-1 px-5 py-3 border border-border bg-card-bg hover:bg-neutral-50 dark:hover:bg-neutral-900 text-foreground rounded-xl font-semibold transition-all text-xs sm:text-sm text-center"

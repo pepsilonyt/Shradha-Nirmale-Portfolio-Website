@@ -76,7 +76,15 @@ export default function Home() {
               <SmartForm
                 key="smart-form"
                 preselectedTrack={preselectedTrack}
-                onSuccess={() => setFormCompleted(true)}
+                onSuccess={() => {
+                  setFormCompleted(true);
+                  setTimeout(() => {
+                    const el = document.getElementById('form');
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 50);
+                }}
               />
             ) : (
               <SuccessState key="success-state" />
