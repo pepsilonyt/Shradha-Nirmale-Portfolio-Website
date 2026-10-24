@@ -68,8 +68,8 @@ Ensure you have [Node.js](https://nodejs.org/) (v18.17 or later) installed.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/pepsilonyt/Shradha-Nirmale-Portfolio-Website.git
-   cd Shradha-Nirmale-Portfolio-Website
+   git clone https://github.com/pepsilonyt/shradhalearningstrategist.working.git
+   cd shradhalearningstrategist.working
    ```
 
 2. Install dependencies:
