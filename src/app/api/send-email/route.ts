@@ -144,7 +144,7 @@ export async function POST(request: Request) {
           'Authorization': `Bearer ${resendApiKey}`,
         },
         body: JSON.stringify({
-          from: process.env.FROM_EMAIL || 'Portfolio Funnel <onboarding@resend.dev>',
+          from: process.env.FROM_EMAIL || 'Shradha N. <contact@shradhalearningstrategist.com>',
           to: recipient,
           reply_to: data.email || undefined,
           subject: subject,
