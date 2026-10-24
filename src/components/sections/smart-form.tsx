@@ -217,6 +217,12 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
     e.preventDefault();
     if (isSubmitting) return;
 
+    // If user presses Enter on Step 1 or Step 2, advance to next step instead of submitting
+    if (step < 3) {
+      await handleNext();
+      return;
+    }
+
     // Validate Step 3 fields
     const isNameValid = await trigger('name');
     const isEmailValid = await trigger('email');
@@ -226,7 +232,7 @@ export default function SmartForm({ preselectedTrack, onSuccess }: SmartFormProp
       return;
     }
 
-    // Instantly launch Google Calendar in a new tab upon user submit
+    // Instantly launch Google Calendar in a new tab upon user submit on Step 3
     try {
       window.open(NAV.calendar, '_blank');
     } catch (err) {
