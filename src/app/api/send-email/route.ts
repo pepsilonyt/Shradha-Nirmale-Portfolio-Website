@@ -153,8 +153,33 @@ export async function POST(request: Request) {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Resend API Error details:', errorText);
+        const errorData = await response.json().catch(() => null);
+        console.error('Resend API Error details:', errorData);
+
+        // If Resend blocked because the destination domain is not yet verified in resend.com/domains,
+        // fallback to the verified account owner email so no lead is ever lost
+        if (errorData?.statusCode === 403 && recipient !== 'epsyygot@gmail.com') {
+          console.warn('Sandbox restriction active: Retrying delivery to verified account email (epsyygot@gmail.com)');
+          const fallbackResp = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${resendApiKey}`,
+            },
+            body: JSON.stringify({
+              from: 'Portfolio Funnel <onboarding@resend.dev>',
+              to: 'epsyygot@gmail.com',
+              reply_to: data.email || undefined,
+              subject: `[Lead Notification] ${subject}`,
+              html: htmlContent,
+            }),
+          });
+
+          if (fallbackResp.ok) {
+            return NextResponse.json({ success: true, method: 'resend-fallback' });
+          }
+        }
+
         throw new Error('Resend email dispatch failed');
       }
 
